@@ -1,0 +1,12 @@
+[
+    {
+        "model-name": "Bed",
+        "resource-file": "beds.json",
+        "table-name": "bed"
+    },
+    {
+        "model-name": "Patient",
+        "resource-file": "patients.json",
+        "table-name": "patients"
+    }
+]
