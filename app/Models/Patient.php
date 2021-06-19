@@ -28,17 +28,18 @@ class Patient extends Model
      * @var array
      */
     protected $fillable = [
-                  'name',
-                  'age',
-                  'contact_no',
-                  'address',
-                  'moh_area_id',
-                  'bed_id',
-                  'nic',
-                  'user_id',
-                  'admitted',
-                  'discharged'
-              ];
+                'name',
+                'age',
+                'contact_no',
+                'address',
+                'moh_area_id',
+                'bed_id',
+                'nic',
+                'user_id',
+                'admitted',
+                'discharged',
+                'is_discharged'
+            ];
 
     /**
      * The attributes that should be mutated to dates.
