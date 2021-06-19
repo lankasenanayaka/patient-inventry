@@ -34,8 +34,9 @@ class HomeController extends Controller
         $beds_all = Bed::get()->count();
 
         $available_beds = $beds_all-$patients_active;
-        $available_beds_percentage = ($beds_all>0)?($available_beds/$beds_all)*100:0;
-        $cured_patient_percentage = ($patients_all>0)? ($patients_active/$patients_all)*100:0;
+        $available_beds = ($available_beds >0)?$available_beds:0;
+        $available_beds_percentage = ($available_beds>0 && $beds_all>0)?($available_beds/$beds_all)*100:0;
+        $cured_patient_percentage = ($patients_active>0 && $patients_all>0)? ($patients_active/$patients_all)*100:0;
 
         $widget = [
             'patients_active' => $patients_active,
