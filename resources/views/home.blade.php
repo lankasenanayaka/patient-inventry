@@ -46,7 +46,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Available beds</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $widget['beds_all'] - $widget['patients_active'] }}</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $widget['available_beds'] }}</div>
                         </div>
                         <!-- <div class="col-auto">
                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>

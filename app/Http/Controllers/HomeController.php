@@ -42,6 +42,7 @@ class HomeController extends Controller
             'patients_active' => $patients_active,
             'patients_all' => $patients_all,
             'beds_all' => $beds_all,
+            'available_beds' => $available_beds,
             'available_beds_percentage' => (int)$available_beds_percentage,
             'cured_patient_percentage' => (int)$cured_patient_percentage,
         ];
