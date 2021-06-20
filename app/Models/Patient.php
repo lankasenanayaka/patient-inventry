@@ -38,8 +38,10 @@ class Patient extends Model
                 'user_id',
                 'admitted',
                 'discharged',
-                'is_discharged'
-            ];
+                'is_discharged',
+                'co_modibilities',
+                'other',
+            ]; 
 
     /**
      * The attributes that should be mutated to dates.

@@ -119,7 +119,6 @@ class PatientsController extends Controller
         ]);
 
         try {
-            
             $data = $this->getData($request);
             $data['user_id'] = auth()->user()->id;
             $patient = Patient::findOrFail($id);
@@ -174,6 +173,11 @@ class PatientsController extends Controller
             'bed_id' => 'nullable',
             'user_id' => 'nullable', 
             'nic' => 'required',
+            'co_modibilities' => 'nullable',
+            'other' => 'nullable',
+            'admitted' => 'nullable',
+            'discharged' => 'nullable',
+
         ];
         
         $data = $request->validate($rules);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Bed;
+use App\Models\Patient;
 use App\User;
 use Illuminate\Http\Request;
 use Exception;
@@ -18,9 +19,21 @@ class BedsController extends Controller
      */
     public function index()
     {
+        $occupied_beds = Patient::where('is_discharged', 0)->get()->count();
+        $beds_all = Bed::get()->count();
+
+        $available_beds = $beds_all-$occupied_beds;
+        $available_beds = ($available_beds >0)?$available_beds:0;
+
+        $widget = [
+            'occupied_beds' => $occupied_beds,
+            'beds_all' => $beds_all,
+            'available_beds' => $available_beds,
+        ];
+
         $beds = Bed::with('user')->paginate(25);
 
-        return view('beds.index', compact('beds'));
+        return view('beds.index', compact('beds', 'widget'));
     }
 
     /**

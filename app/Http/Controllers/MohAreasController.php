@@ -153,8 +153,11 @@ class MohAreasController extends Controller
     protected function getData(Request $request)
     {
         $rules = [
-                'name' => 'nullable|string|min:0|max:200',
+            'name' => 'nullable|string|min:0|max:200',
             'user_id' => 'nullable', 
+            'police' => 'nullable',
+            'gs' => 'nullable',
+            'destination' => 'nullable'
         ];
         
         $data = $request->validate($rules);

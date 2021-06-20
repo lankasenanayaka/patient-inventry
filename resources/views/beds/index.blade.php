@@ -35,6 +35,10 @@
                 <h4>No Beds Available.</h4>
             </div>
         @else
+
+        <div class="panel-body text-center">
+            <h4>Total beds : {{ $widget['beds_all'] }} &nbsp;&nbsp; Occupied beds : {{ $widget['occupied_beds'] }} &nbsp;&nbsp; Vacancies : {{ $widget['available_beds'] }}</h4>
+        </div>
         <div class="panel-body panel-body-with-table">
             <div class="table-responsive">
 

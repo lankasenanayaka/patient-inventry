@@ -75,15 +75,30 @@
     <label for="bed_id" class="col-md-2 control-label">Bed</label>
     <div class="col-md-10">
         <select class="form-control" id="bed_id" name="bed_id">
-        	    <option value="" style="display: none;" {{ old('bed_id', optional($patient)->bed_id ?: '') == '' ? 'selected' : '' }} disabled selected>Select bed</option>
-        	@foreach ($Beds as $key => $Bed)
-			    <option value="{{ $key }}" {{ old('bed_id', optional($patient)->bed_id) == $key ? 'selected' : '' }}>
-			    	{{ $Bed }}
-			    </option>
-			@endforeach
+            <option value="" style="display: none;" {{ old('bed_id', optional($patient)->bed_id ?: '') == '' ? 'selected' : '' }} disabled selected>Select bed</option>
+            @foreach ($Beds as $key => $Bed)
+                <option value="{{ $key }}" {{ old('bed_id', optional($patient)->bed_id) == $key ? 'selected' : '' }}>
+                {{ $Bed }}
+                </option>
+            @endforeach
         </select>
-        
         {!! $errors->first('bed_id', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
+
+<div class="form-group {{ $errors->has('co_modibilities') ? 'has-error' : '' }}">
+    <label for="co_modibilities" class="col-md-2 control-label">Co-modibilities</label>
+    <div class="col-md-10">
+        <input class="form-control" name="co_modibilities" type="text" id="co_modibilities" value="{{ old('co_modibilities', optional($patient)->co_modibilities) }}" placeholder="Enter co modibilities here...">
+        {!! $errors->first('co_modibilities', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
+
+<div class="form-group {{ $errors->has('other') ? 'has-error' : '' }}">
+    <label for="other" class="col-md-2 control-label">Other (user)</label>
+    <div class="col-md-10">
+        <input class="form-control" name="other" type="text" id="other" value="{{ old('other', optional($patient)->other) }}" placeholder="Enter other data here...">
+        {!! $errors->first('other', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
 

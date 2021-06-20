@@ -30,9 +30,12 @@ class MohArea extends Model
      */
     protected $fillable = [
                   'name',
-                  'user_id'
+                  'user_id',
+                  'police',
+                  'gs',
+                  'destination'
               ];
-
+                
     /**
      * The attributes that should be mutated to dates.
      *
