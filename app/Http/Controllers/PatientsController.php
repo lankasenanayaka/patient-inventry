@@ -177,6 +177,7 @@ class PatientsController extends Controller
             'other' => 'nullable',
             'admitted' => 'nullable',
             'discharged' => 'nullable',
+            'positive_on' => 'nullable',
 
         ];
         

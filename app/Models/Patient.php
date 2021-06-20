@@ -41,6 +41,7 @@ class Patient extends Model
                 'is_discharged',
                 'co_modibilities',
                 'other',
+                'positive_on',
             ]; 
 
     /**

@@ -39,6 +39,14 @@
     </div>
 </div>
 
+<div class="form-group {{ $errors->has('positive_on') ? 'has-error' : '' }}">
+    <label for="positive_on" class="col-md-2 control-label">Positive on</label>
+    <div class="col-md-10">
+        <input class="form-control" name="positive_on" type="date" id="positive_on" value="{{ old('positive_on', optional($patient)->positive_on) }}" placeholder="Enter positive date here...">
+        {!! $errors->first('positive_on', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
+
 <div class="form-group {{ $errors->has('admitted') ? 'has-error' : '' }}">
     <label for="admitted" class="col-md-2 control-label">Admitted</label>
     <div class="col-md-10">
