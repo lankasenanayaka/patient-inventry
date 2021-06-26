@@ -2,6 +2,9 @@
 
 @section('main-content')
 <style>
+body {
+-webkit-print-color-adjust:exact;
+}
 tr {
   text-align: center;
 }
@@ -17,6 +20,8 @@ body {
     color: #4a5568;
     text-align: left;
 }
+
+#tbl1 {background-color:#e7e9eb; }
 
 tr {
   text-align: center;
@@ -39,10 +44,10 @@ function printCertificate(){
     w=window.open();
     w.document.write('<html><head><title>Patient Certificate</title>');
     w.document.write('<link rel="stylesheet" href="{{ asset('css/sb-admin-2.min.css') }}" type="text/css" />');
-
     w.document.write('<style>');
     w.document.write('body { font-family: Nunito,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";  font-size: .875rem; font-weight: 400; line-height: 1.5; color: #4a5568; text-align: left;} tr {  text-align: center;} th {   text-align: center; } td { text-align: center; } td { padding-top: 50px; } table { background-color:#e7e9eb; margin: 50px;width: 800px;height: 500px;} ');
     w.document.write('</style>');
+    w.document.write('<style>body {    font-family: Nunito,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";    font-size: .875rem;    font-weight: 400;    line-height: 1.5;    color: #4a5568;    text-align: left;}#tbl1 {background-color:#e7e9eb; }tr {  text-align: center;}th {  text-align: center;}td {  text-align: center;}td {  padding-top: 50px;}table { background-color:#e7e9eb; margin: 50px;width: 800px;height: 500px;}</style>');
 
     w.document.write('</head><body >');
     w.document.write(document.getElementById("print_patient").innerHTML);    
@@ -110,7 +115,7 @@ function printCertificate(){
     </div> -->
     
     <div id="print_patient" class="panel-body" style="margin:10px; "> 
-        <table >
+        <table id="tbl1" >
             <thead>
             <tr><th> CERTIFICATE OF COMPLETION OF QUARANTINE </th></tr>
             </thead>
