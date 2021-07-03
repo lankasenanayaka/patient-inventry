@@ -90,3 +90,22 @@ Route::group(['middleware' => 'auth'], function()
 });
 
 
+
+Route::group([
+    'prefix' => 'bed_categories',
+], function () {
+    Route::get('/', 'BedCategoriesController@index')
+         ->name('bed_categories.bed_category.index');
+    Route::get('/create','BedCategoriesController@create')
+         ->name('bed_categories.bed_category.create');
+    Route::get('/show/{bedCategory}','BedCategoriesController@show')
+         ->name('bed_categories.bed_category.show')->where('id', '[0-9]+');
+    Route::get('/{bedCategory}/edit','BedCategoriesController@edit')
+         ->name('bed_categories.bed_category.edit')->where('id', '[0-9]+');
+    Route::post('/', 'BedCategoriesController@store')
+         ->name('bed_categories.bed_category.store');
+    Route::put('bed_category/{bedCategory}', 'BedCategoriesController@update')
+         ->name('bed_categories.bed_category.update')->where('id', '[0-9]+');
+    Route::delete('/bed_category/{bedCategory}','BedCategoriesController@destroy')
+         ->name('bed_categories.bed_category.destroy')->where('id', '[0-9]+');
+});

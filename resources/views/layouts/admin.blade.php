@@ -76,6 +76,13 @@
             </a>
         </li>
 
+        <li class="nav-item {{ (request()->segment(1) == 'bed_categories') ? 'active' : '' }}"> 
+            <a class="nav-link" href="{{ url('bed_categories') }}">
+                <i class="fas fa-fw fa-hands-helping"></i>
+                <span>{{ __('Bed Category') }}</span>
+            </a>
+        </li>
+
         <li class="nav-item {{ (request()->segment(1) == 'beds') ? 'active' : '' }}"> 
             <a class="nav-link" href="{{ url('beds') }}">
                 <i class="fas fa-fw fa-hands-helping"></i>

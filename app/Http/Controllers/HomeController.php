@@ -29,9 +29,9 @@ class HomeController extends Controller
     public function index()
     {
         $users = User::count();
-        $patients_active = Patient::where('is_discharged', 0)->get()->count();
-        $patients_all = Patient::get()->count();
-        $beds_all = Bed::get()->count();
+        $patients_active = Patient::where('is_discharged', 0)->where('user_id', auth()->user()->id)->get()->count();
+        $patients_all = Patient::where('user_id', auth()->user()->id)->get()->count();
+        $beds_all = Bed::where('user_id', auth()->user()->id)->get()->count();
 
         $available_beds = $beds_all-$patients_active;
         $available_beds = ($available_beds >0)?$available_beds:0;

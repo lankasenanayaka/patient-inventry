@@ -7,19 +7,19 @@
     </div>
 </div>
 
-<!-- <div class="form-group {{ $errors->has('user_id') ? 'has-error' : '' }}">
-    <label for="user_id" class="col-md-2 control-label">User</label>
+<div class="form-group {{ $errors->has('bed_category') ? 'has-error' : '' }}">
+    <label for="bed_category" class="col-md-2 control-label">Bed category</label>
     <div class="col-md-10">
-        <select class="form-control" id="user_id" name="user_id">
-        	    <option value="" style="display: none;" {{ old('user_id', optional($bed)->user_id ?: '') == '' ? 'selected' : '' }} disabled selected>Select user</option>
-        	@foreach ($Users as $key => $User)
-			    <option value="{{ $key }}" {{ old('user_id', optional($bed)->user_id) == $key ? 'selected' : '' }}>
-			    	{{ $User }}
+        <select class="form-control" id="bed_category" name="bed_category">
+        	    <option value=""  {{ old('bed_category', optional($bed)->bed_category ?: '') == '' ? 'selected' : '' }} >Select bed category</option>
+        	@foreach ($BedCateories as $key => $BedCateory)
+			    <option value="{{ $key }}" {{ old('bed_category', optional($bed)->bed_category) == $key ? 'selected' : '' }}>
+			    	{{ utf8_decode($BedCateory) }}
 			    </option>
 			@endforeach
         </select>
         
-        {!! $errors->first('user_id', '<p class="help-block">:message</p>') !!}
+        {!! $errors->first('bed_category', '<p class="help-block">:message</p>') !!}
     </div>
-</div> -->
+</div>
 

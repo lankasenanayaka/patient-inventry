@@ -20,7 +20,7 @@ class PatientsController extends Controller
      */
     public function index()
     {
-        $patients = Patient::with('moharea','bed','user')->paginate(25);
+        $patients = Patient::where('user_id', auth()->user()->id)->with('moharea','bed','user')->paginate(25);
 
         return view('patients.index', compact('patients'));
     }
@@ -33,7 +33,7 @@ class PatientsController extends Controller
     public function create()
     {
         $MohAreas = MohArea::pluck('name','id')->all();
-        $Beds = Bed::pluck('bed_name','id')->all();
+        $Beds = Bed::where('user_id', auth()->user()->id)->pluck('bed_name','id')->all();
         $Users = User::pluck('id','id')->all();
         
         return view('patients.create', compact('MohAreas','Beds','Users'));
@@ -79,7 +79,7 @@ class PatientsController extends Controller
      */
     public function show($id)
     {
-        $patient = Patient::with('moharea','bed','user')->findOrFail($id);
+        $patient = Patient::where('user_id', auth()->user()->id)->with('moharea','bed','user')->findOrFail($id);
 
         return view('patients.show', compact('patient'));
     }
@@ -93,7 +93,7 @@ class PatientsController extends Controller
      */
     public function edit($id)
     {
-        $patient = Patient::findOrFail($id);
+        $patient = Patient::where('user_id', auth()->user()->id)->findOrFail($id);
         $MohAreas = MohArea::pluck('name','id')->all();
         $Beds = Bed::pluck('bed_name','id')->all();
         $Users = User::pluck('id','id')->all();
@@ -119,9 +119,11 @@ class PatientsController extends Controller
         ]);
 
         try {
+            
             $data = $this->getData($request);
             $data['user_id'] = auth()->user()->id;
-            $patient = Patient::findOrFail($id);
+            $patient = Patient::where('user_id', auth()->user()->id)->findOrFail($id);
+            // dd($data);
             $patient->update($data);
 
             return redirect()->route('patients.patient.index')
@@ -143,7 +145,7 @@ class PatientsController extends Controller
     public function destroy($id)
     {
         try {
-            $patient = Patient::findOrFail($id);
+            $patient = Patient::where('user_id', auth()->user()->id)->findOrFail($id);
             $patient->delete();
 
             return redirect()->route('patients.patient.index')
@@ -177,8 +179,62 @@ class PatientsController extends Controller
             'other' => 'nullable',
             'admitted' => 'nullable',
             'discharged' => 'nullable',
+            'sex' => 'nullable',
+            'district' => 'nullable',
+            'police_station' => 'nullable',
+            'gs_division' => 'nullable',
+            'destination' => 'nullable',
             'positive_on' => 'nullable',
-
+            'icc_no' => 'nullable',
+            'diagnosis' => 'nullable',
+            'complications' => 'nullable',
+            'vaccine1_given' => 'nullable',
+            'vaccine2_given' => 'nullable',
+            'sputnik' => 'nullable',
+            'sinopharm' => 'nullable',
+            'covishield' => 'nullable',
+            'symptomatic' => 'nullable',
+            'symptoms' => 'nullable',
+            'tem1' => 'nullable',
+            'tem2' => 'nullable',
+            'res1' => 'nullable',
+            'res2' => 'nullable',
+            'pr1' => 'nullable',
+            'pr2' => 'nullable',
+            'bp1' => 'nullable',
+            'bp2' => 'nullable',
+            'sp1' => 'nullable',
+            'sp2' => 'nullable',
+            'other_findings' => 'nullable',
+            'date1' => 'nullable',
+            'date2' => 'nullable',
+            'date3' => 'nullable',
+            'date4' => 'nullable',
+            'date5' => 'nullable',
+            'date6' => 'nullable',
+            'date7' => 'nullable',
+            'pcr_rat1' => 'nullable',
+            'pcr_rat2' => 'nullable',
+            'pcr_rat3' => 'nullable',
+            'pcr_rat4' => 'nullable',
+            'pcr_rat5' => 'nullable',
+            'pcr_rat6' => 'nullable',
+            'pcr_rat7' => 'nullable',
+            'pcr_rat_res1' => 'nullable',
+            'pcr_rat_res2' => 'nullable',
+            'pcr_rat_res3' => 'nullable',
+            'pcr_rat_res4' => 'nullable',
+            'pcr_rat_res5' => 'nullable',
+            'pcr_rat_res6' => 'nullable',
+            'pcr_rat_res7' => 'nullable',
+            'treatment' => 'nullable',
+            'discharge_plan' => 'nullable',
+            'home_quarantine_from' => 'nullable',
+            'home_quarantine_to' => 'nullable',
+            'remark_investigations' => 'nullable',
+            'mo_icc' => 'nullable',
+            'sign_date' => 'nullable',
+            'signature' => 'nullable',
         ];
         
         $data = $request->validate($rules);

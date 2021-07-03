@@ -8,5 +8,10 @@
         "model-name": "Patient",
         "resource-file": "patients.json",
         "table-name": "patients"
+    },
+    {
+        "model-name": "BedCategory",
+        "resource-file": "bed_categories.json",
+        "table-name": "bed_category"
     }
 ]

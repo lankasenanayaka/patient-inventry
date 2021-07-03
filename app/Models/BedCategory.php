@@ -3,18 +3,17 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Bed extends Model
+class BedCategory extends Model
 {
-    use SoftDeletes;
+    
 
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'bed';
+    protected $table = 'bed_category';
 
     /**
     * The database primary key value.
@@ -29,9 +28,9 @@ class Bed extends Model
      * @var array
      */
     protected $fillable = [
-                  'bed_name',
-                  'user_id',
-                  'bed_category',
+                  'name',
+                  'desc',
+                  'user_id'
               ];
 
     /**
@@ -49,28 +48,13 @@ class Bed extends Model
     protected $casts = [];
     
     /**
-     * Get the User for this model.
+     * Get the user for this model.
      *
-     * @return App\User
+     * @return App\Models\User
      */
-    public function User()
+    public function user()
     {
-        return $this->belongsTo('App\User','user_id','id');
-    }
-
-    public function Category()
-    {
-        return $this->belongsTo('App\Models\BedCategory','bed_category','id');
-    }
-
-    /**
-     * Get the patient for this model.
-     *
-     * @return App\Models\Patient
-     */
-    public function patient()
-    {
-        return $this->hasOne('App\Models\Patient','bed_id','id');
+        return $this->belongsTo('App\User','user_id');
     }
 
 
@@ -92,6 +76,17 @@ class Bed extends Model
      * @return array
      */
     public function getUpdatedAtAttribute($value)
+    {
+        return \DateTime::createFromFormat($this->getDateFormat(), $value)->format('j/n/Y g:i A');
+    }
+
+    /**
+     * Get deleted_at in array format
+     *
+     * @param  string  $value
+     * @return array
+     */
+    public function getDeletedAtAttribute($value)
     {
         return \DateTime::createFromFormat($this->getDateFormat(), $value)->format('j/n/Y g:i A');
     }

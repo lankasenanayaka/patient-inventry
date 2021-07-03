@@ -8,6 +8,7 @@ use App\Models\Patient;
 use App\User;
 use Illuminate\Http\Request;
 use Exception;
+use App\Models\BedCategory;
 
 class BedsController extends Controller
 {
@@ -19,8 +20,8 @@ class BedsController extends Controller
      */
     public function index()
     {
-        $occupied_beds = Patient::where('is_discharged', 0)->get()->count();
-        $beds_all = Bed::get()->count();
+        $occupied_beds = Patient::where('is_discharged', 0)->where('user_id', auth()->user()->id)->get()->count();
+        $beds_all = Bed::where('user_id', auth()->user()->id)->get()->count();
 
         $available_beds = $beds_all-$occupied_beds;
         $available_beds = ($available_beds >0)?$available_beds:0;
@@ -31,7 +32,7 @@ class BedsController extends Controller
             'available_beds' => $available_beds,
         ];
 
-        $beds = Bed::with('user')->paginate(25);
+        $beds = Bed::with('user', 'category')->paginate(25);
 
         return view('beds.index', compact('beds', 'widget'));
     }
@@ -86,7 +87,7 @@ class BedsController extends Controller
      */
     public function show($id)
     {
-        $bed = Bed::with('user')->findOrFail($id);
+        $bed = Bed::with('user')->where('user_id', auth()->user()->id)->findOrFail($id);
 
         return view('beds.show', compact('bed'));
     }
@@ -100,10 +101,11 @@ class BedsController extends Controller
      */
     public function edit($id)
     {
-        $bed = Bed::findOrFail($id);
+        $bed = Bed::where('user_id', auth()->user()->id)->findOrFail($id);
         $Users = User::pluck('id','id')->all();
+        $BedCateories = BedCategory::pluck('name','id')->all();
 
-        return view('beds.edit', compact('bed','Users'));
+        return view('beds.edit', compact('bed','BedCateories'));
     }
 
     /**
@@ -125,7 +127,7 @@ class BedsController extends Controller
             
             $data = $this->getData($request);
             $data['user_id'] = auth()->user()->id;
-            $bed = Bed::findOrFail($id);
+            $bed = Bed::where('user_id', auth()->user()->id)->findOrFail($id);
             $bed->update($data);
 
             return redirect()->route('beds.bed.index')
@@ -147,7 +149,7 @@ class BedsController extends Controller
     public function destroy($id)
     {
         try {
-            $bed = Bed::findOrFail($id);
+            $bed = Bed::where('user_id', auth()->user()->id)->findOrFail($id);
             $bed->delete();
 
             return redirect()->route('beds.bed.index')
@@ -170,8 +172,9 @@ class BedsController extends Controller
     {
         $rules = [
                 'bed_name' => 'nullable|string|min:0|max:100',
-            'user_id' => 'nullable', 
-        ];
+                'user_id' => 'nullable', 
+                'bed_category' => 'nullable', 
+            ];
         
         $data = $request->validate($rules);
 
