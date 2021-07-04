@@ -1,4 +1,5 @@
 $('#search_patient').select2({
+    placeholder: "Search patients here :",
     ajax: {
         url: '/patients/searchPatient',
         dataType: 'json'
