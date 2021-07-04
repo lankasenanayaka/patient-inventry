@@ -67,8 +67,7 @@ Route::group(['middleware' => 'auth'], function()
               ->name('patients.patient.update')->where('id', '[0-9]+');
          Route::delete('/patient/{patient}','PatientsController@destroy')
               ->name('patients.patient.destroy')->where('id', '[0-9]+');
-         Route::get('/searchPatient','PatientsController@searchPatient')
-              ->name('patients.patient.show');     
+         Route::get('/searchPatient','PatientsController@searchPatient');     
      });
      
      Route::group([
