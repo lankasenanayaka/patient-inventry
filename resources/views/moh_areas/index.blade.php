@@ -42,7 +42,7 @@
                     <thead>
                         <tr>
                             <th>Name</th>
-                            <th>User</th>
+                            <!-- <th>User</th> -->
 
                             <th></th>
                         </tr>
@@ -51,7 +51,7 @@
                     @foreach($mohAreas as $mohArea)
                         <tr>
                             <td>{{ $mohArea->name }}</td>
-                            <td>{{ optional($mohArea->User)->name }}</td>
+                            <!-- <td>{{ optional($mohArea->User)->name }}</td> -->
 
                             <td>
 

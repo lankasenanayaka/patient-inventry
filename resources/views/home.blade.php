@@ -45,12 +45,12 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
+                            <a href="/available_beds"> 
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Available beds</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $widget['available_beds'] }}</div>
+                            </a>
                         </div>
-                        <!-- <div class="col-auto">
-                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                        </div> -->
+
                         <div class="col-auto">
                             <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
                         </div>
@@ -60,7 +60,7 @@
         </div>
 
         <!-- Earnings (Monthly) Card Example -->
-        <div class="col-xl-3 col-md-6 mb-4">
+        <!-- <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-info shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
@@ -69,13 +69,30 @@
                             <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
                                     <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"> {{ $widget['beds_all'] }}</div>
-                                </div>
-                                <!-- <div class="col">
-                                    <div class="progress progress-sm mr-2">
-                                        <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div> -->
+                                </div>                               
                             </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <a href="/occupied_beds"> 
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Occupied beds</div>
+                            <div class="row no-gutters align-items-center">
+                                <div class="col-auto">
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"> {{ $widget['patients_active'] }}</div>
+                                </div>                               
+                            </div>
+                            </a>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
@@ -91,8 +108,10 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">{{ __('All patients') }}</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"> {{ $widget['patients_all'] }}  </div>
+                            <a href="/patients?bed_category=&discharged={{ date('Y-m-d',strtotime(date('Y-m-d') . "+1 days"))}}"> 
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">{{ __('TDOD patients') }}</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">   </div>
+                            </a>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -115,14 +134,42 @@
                 </div>
                
                 <div class="card-body">
-                    <h4 class="small font-weight-bold">Available beds percentage <span class="float-right">{{ $widget['available_beds_percentage'] }}%</span></h4>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Bed category</th>
+                                    <th>Active patients</th>
+                                    <th>Availabe beds</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @php 
+                            $i = 1;
+                            @endphp
+                            @foreach($widget['patient_details'] as $patient_detail)
+                                <tr>
+                                    <td>{{$i}}</td>
+                                    <td>{{ utf8_decode($patient_detail['name']) }}</td>
+                                    <td>{{ $patient_detail['active'] }}</td>
+                                    <td>{{ $patient_detail['available'] }}</td>
+                                </tr>
+                                @php 
+                                $i++;
+                                @endphp
+                            @endforeach    
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- <h4 class="small font-weight-bold">Available beds percentage <span class="float-right">{{ $widget['available_beds_percentage'] }}%</span></h4>
                     <div class="progress mb-4">
                         <div class="progress-bar bg-danger" role="progressbar" style="width: {{ $widget['available_beds_percentage'] }}%" aria-valuenow="{{ $widget['available_beds_percentage'] }}" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                     <h4 class="small font-weight-bold">Cured patient percentage <span class="float-right">{{ $widget['cured_patient_percentage'] }}%</span></h4>
                     <div class="progress mb-4">
                         <div class="progress-bar bg-warning" role="progressbar" style="width: {{ $widget['cured_patient_percentage'] }}%" aria-valuenow="{{ $widget['cured_patient_percentage'] }}" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
+                    </div> -->
                     <!-- <h4 class="small font-weight-bold">Customer Database <span class="float-right">60%</span></h4>
                     <div class="progress mb-4">
                         <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>

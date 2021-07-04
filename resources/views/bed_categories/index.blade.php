@@ -43,7 +43,7 @@
                         <tr>
                             <th>Name</th>
                             <th>Desc</th>
-                            <th>User</th>
+                            <!-- <th>User</th> -->
 
                             <th></th>
                         </tr>
@@ -53,7 +53,7 @@
                         <tr>
                             <td>{{ utf8_decode($bedCategory->name) }}</td>
                             <td>{{ $bedCategory->desc }}</td>
-                            <td>{{ optional($bedCategory->user)->name }}</td>
+                            <!-- <td>{{ optional($bedCategory->user)->name }}</td> -->
 
                             <td>
 

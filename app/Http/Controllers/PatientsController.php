@@ -280,4 +280,18 @@ class PatientsController extends Controller
         return response()->json(['success'=>true, 'results'=>$data]);
     }
 
+     
+    public function availableBeds()
+    {
+        $patient_details = $this->patientDetailsByCategory();
+        $aval =1;
+        return view('patients.available_beds', compact('patient_details', 'aval'));
+    }
+
+    public function occupiedBeds()
+    {
+        $patient_details = $this->patientDetailsByCategory();
+        $aval =2;
+        return view('patients.available_beds', compact('patient_details', 'aval'));
+    }
 }

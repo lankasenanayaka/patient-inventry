@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Bed;
 use App\Models\MohArea;
 use App\Models\Patient;
-
+use App\Models\BedCategory;
 
 class HomeController extends Controller
 {
@@ -32,6 +32,7 @@ class HomeController extends Controller
         $patients_active = Patient::where('is_discharged', 0)->where('user_id', auth()->user()->id)->get()->count();
         $patients_all = Patient::where('user_id', auth()->user()->id)->get()->count();
         $beds_all = Bed::where('user_id', auth()->user()->id)->get()->count();
+        
 
         $available_beds = $beds_all-$patients_active;
         $available_beds = ($available_beds >0)?$available_beds:0;
@@ -45,10 +46,11 @@ class HomeController extends Controller
             'available_beds' => $available_beds,
             'available_beds_percentage' => (int)$available_beds_percentage,
             'cured_patient_percentage' => (int)$cured_patient_percentage,
+            'patient_details' => $this->patientDetailsByCategory(),
         ];
-
-
 
         return view('home', compact('widget'));
     }
+
+    
 }

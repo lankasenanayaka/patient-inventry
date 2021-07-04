@@ -124,7 +124,7 @@ function printCertificate(){
             <tr><th>(SARS Cov - 2 RNA (PCR) was positive on : {{ $patient->positive_on }} )</th></tr>
             <tr><th> Has successfully completed 10 days of quarantine at COVID 19 Treatment center {{ ($patient->user && $patient->user->name)?$patient->user->name:"" }} {{ ($patient->user && $patient->user->last_name)?$patient->user->last_name:"" }}</th></tr>
             <tr><th>DOA : {{ $patient->admitted }} DOD : {{ $patient->discharged }} </th></tr>
-            <tr><th>Suggest 04 days of home quarantine </th></tr>
+            <tr><th>Suggest 04 days of home quarantine (from {{ $patient->home_quarantine_from }} to {{ $patient->home_quarantine_to }}) </th></tr>
             <tr><th>&nbsp;&nbsp;</th></tr>
             <tr><th>Doctor in charge</th></tr>
             <tr><th>Covid19 treatment center {{ ($patient->user && $patient->user->name)?$patient->user->name:"" }} {{ ($patient->user && $patient->user->last_name)?$patient->user->last_name:"" }}</th></tr>

@@ -47,7 +47,7 @@
                         <tr>
                             <th>Bed Name</th>
                             <th>Category</th>
-                            <th>User</th>
+                            <!-- <th>User</th> -->
 
                             <th></th>
                         </tr>
@@ -57,7 +57,7 @@
                         <tr>
                             <td>{{ $bed->bed_name }}</td>
                             <td>{{ utf8_decode(optional($bed->Category)->name) }}</td>
-                            <td>{{ optional($bed->User)->name }}</td>
+                            <!-- <td>{{ optional($bed->User)->name }}</td> -->
 
                             <td>
 

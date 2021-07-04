@@ -69,6 +69,9 @@ Route::group(['middleware' => 'auth'], function()
               ->name('patients.patient.destroy')->where('id', '[0-9]+');
          Route::get('/searchPatient','PatientsController@searchPatient');     
      });
+
+     Route::get('/available_beds', 'PatientsController@availableBeds');
+     Route::get('/occupied_beds','PatientsController@occupiedBeds'); 
      
      Route::group([
          'prefix' => 'moh_areas',

@@ -63,6 +63,7 @@
         
         @if(count($patients) == 0)
             <div class="panel-body text-center">
+            <br/>
                 <h4>No Patients Available.</h4>
             </div>
         @else
