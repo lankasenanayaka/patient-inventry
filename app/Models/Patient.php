@@ -96,6 +96,7 @@ class Patient extends Model
         'mo_icc',
         'sign_date',
         'signature',
+        'is_discharged',
             ]; 
 
     /**

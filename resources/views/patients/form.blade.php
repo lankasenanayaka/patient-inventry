@@ -30,7 +30,7 @@
 <div class="form-group {{ $errors->has('bed_id') ? 'has-error' : '' }}">
     <label for="bed_id" class="col-md-2 control-label">Bed</label>
     <div class="col-md-10">
-        <select class="form-control" id="bed_id" name="bed_id">
+        <select class="form-control select2" id="bed_id" name="bed_id">
             <option value="" style="display: none;" {{ old('bed_id', optional($patient)->bed_id ?: '') == '' ? 'selected' : '' }} disabled selected>Select bed</option>
             @foreach ($Beds as $key => $Bed)
                 <option value="{{ $key }}" {{ old('bed_id', optional($patient)->bed_id) == $key ? 'selected' : '' }}>
@@ -59,7 +59,7 @@
 </div>
 
 <div class="form-group {{ $errors->has('nic') ? 'has-error' : '' }}">
-    <label for="nic" class="col-md-2 control-label">Id number</label>
+    <label for="nic" class="col-md-2 control-label">Id number (NIC)</label>
     <div class="col-md-10">
         <input class="form-control" name="nic" type="text" id="nic" value="{{ old('nic', optional($patient)->nic) }}" min="0" placeholder="Enter nic here...">
         {!! $errors->first('nic', '<p class="help-block">:message</p>') !!}
@@ -143,6 +143,20 @@
     <div class="col-md-6">
         <input class="form-control" name="discharged" type="date" id="discharged" value="{{ old('discharged', optional($patient)->discharged) }}" placeholder="Enter discharge date here...">
         {!! $errors->first('discharged', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
+
+<div class="row">
+    <div class="form-group col-md-6">
+        <label for="vaccine1_given" class="col-md-12 control-label">Discharge patient</label>
+        <div class="col-md-10">
+            <label class="radio-inline">
+                <input type="radio" name="is_discharged" id="is_discharged1" value="1" {{ old('is_discharged', optional($patient)->is_discharged)==1?'checked':'' }} >&nbsp;&nbsp;Yes
+            </label>&nbsp;&nbsp;
+            <label class="radio-inline">
+                <input type="radio" name="is_discharged" id="is_discharged2" value="2" {{ old('is_discharged', optional($patient)->is_discharged)==0?'checked':'' }} >&nbsp;&nbsp;No
+            </label> 
+        </div>       
     </div>
 </div>
 
@@ -619,10 +633,6 @@
     </div>
     
 </div>
-
-
-
-
 
 <!-- 
 

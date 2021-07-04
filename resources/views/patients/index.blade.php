@@ -76,6 +76,7 @@
                 <table class="table table-striped ">
                     <thead>
                         <tr>
+                            <th>Discharge</th>
                             <th>Name</th>
                             <th>Age</th>
                             <th>Date of discharge</th>
@@ -90,6 +91,19 @@
                     <tbody>
                     @foreach($patients as $patient)
                         <tr>
+                            <td>
+                                @if(!$patient->is_discharged)
+                                <form method="POST" action="{!! route('patients.patient.discharge', $patient->id) !!}" accept-charset="UTF-8">
+                                    <input name="_method" value="POST" type="hidden">
+                                    {{ csrf_field() }}
+                                    <div class="btn-group btn-group-xs pull-right" role="group">                                        
+                                        <button type="submit" class="btn btn-warning" title="Discharge Patient" onclick="return confirm(&quot;Click Ok to discharge Patient.&quot;)">
+                                            <span class="fa fa-user-minus" aria-hidden="true"></span>
+                                        </button>
+                                    </div>
+                                </form>   
+                                @endif                             
+                            </td>
                             <td>{{ $patient->name }}</td>
                             <td>{{ $patient->age }}</td>
                             <td>{{ $patient->discharged }}</td>

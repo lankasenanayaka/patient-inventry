@@ -135,6 +135,9 @@ class PatientsController extends Controller
         try {
             
             $data = $this->getData($request);
+            if(isset($data['is_discharged']) && $data['is_discharged']==2){ 
+                $data['is_discharged'] =0;
+            }
             $data['user_id'] = auth()->user()->id;
             $patient = Patient::where('user_id', auth()->user()->id)->findOrFail($id);
             // dd($data);
@@ -164,6 +167,23 @@ class PatientsController extends Controller
 
             return redirect()->route('patients.patient.index')
                 ->with('success_message', 'Patient was successfully deleted.');
+        } catch (Exception $exception) {
+
+            return back()->withInput()
+                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
+        }
+    }
+
+    public function discharge($id)
+    {
+        try {
+            $patient = Patient::where('user_id', auth()->user()->id)->findOrFail($id);
+            $data['discharged'] = date('Y-m-d');
+            $data['is_discharged'] = 1;
+            $patient->update($data);
+            // dd($data);
+            return redirect()->route('patients.patient.index')
+                ->with('success_message', 'Patient was successfully discharged.');
         } catch (Exception $exception) {
 
             return back()->withInput()
@@ -249,6 +269,7 @@ class PatientsController extends Controller
             'mo_icc' => 'nullable',
             'sign_date' => 'nullable',
             'signature' => 'nullable',
+            'is_discharged' => 'nullable',
         ];
         
         $data = $request->validate($rules);

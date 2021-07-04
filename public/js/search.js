@@ -15,3 +15,7 @@ $('#search_patient').on('select2:select', function (e) {
     // $('#ncn').val(data.ncn);
     
 }); 
+
+$('.select2').select2({
+    placeholder: "Please type for search :"    
+});
