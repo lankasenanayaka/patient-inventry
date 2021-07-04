@@ -9,6 +9,7 @@ use App\Models\Patient;
 use App\User;
 use Illuminate\Http\Request;
 use Exception;
+use App\Models\BedCategory;
 
 class PatientsController extends Controller
 {
@@ -18,11 +19,24 @@ class PatientsController extends Controller
      *
      * @return Illuminate\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
-        $patients = Patient::where('user_id', auth()->user()->id)->with('moharea','bed', 'bed.category','user')->paginate(25);
+        $bed_category = $request->get('bed_category');  
+        $discharged = $request->get('discharged');
+        $patients = Patient::where('user_id', auth()->user()->id)->with('moharea','bed', 'bed.category','user');
+        if($bed_category){            
+            $patients->whereHas('bed', function ($query) use ($bed_category) {
+                return $query->where('bed_category', '=', $bed_category);
+            });
+        }
+        if($discharged){
+            $patients->where('discharged', $discharged);
+        }
 
-        return view('patients.index', compact('patients'));
+        $patients = $patients->paginate(25);
+        $BedCateories = BedCategory::pluck('name','id')->all();
+        
+        return view('patients.index', compact('patients','BedCateories','bed_category','discharged'));
     }
 
     /**

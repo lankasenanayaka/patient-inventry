@@ -45,8 +45,9 @@ class BedsController extends Controller
     public function create()
     {
         $Users = User::pluck('id','id')->all();
+        $BedCateories = BedCategory::pluck('name','id')->all();
         
-        return view('beds.create', compact('Users'));
+        return view('beds.create', compact('Users','BedCateories'));
     }
 
     /**

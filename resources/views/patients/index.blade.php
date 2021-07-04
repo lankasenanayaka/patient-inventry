@@ -22,11 +22,42 @@
                 <h4 class="mt-5 mb-5">Patients</h4>
             </div>
 
-            <div class="btn-group btn-group-sm pull-right" role="group">
-                <a href="{{ route('patients.patient.create') }}" class="btn btn-success" title="Create New Patient">
-                    <span class="fa fa-plus" aria-hidden="true"></span>
-                </a>
-            </div>
+            <form class="form-inline">
+                <div class="btn-group btn-group-sm pull-right" role="group">
+                    <a href="{{ route('patients.patient.create') }}" class="btn btn-success" title="Create New Patient">
+                        <span class="fa fa-plus" aria-hidden="true"></span>
+                    </a>
+                </div>
+
+                <div class="form-group mb-2">
+                    
+                </div>
+
+                <div class="form-group  mx-sm-3 mb-2">
+                    <label for="discharged" class="col-md-4 control-label">Discharged</label>
+                    <div class="col-md-8">
+                        <input class="form-control" name="discharged" type="date" id="discharged" value="{{ $discharged }}" placeholder="Search discharge date here...">
+                    </div>
+                </div>
+
+                <div class="form-group mx-sm-3 mb-2">
+                    <label for="bed_category" class="col-md-4 control-label">Bed category</label>
+                    <div class="col-md-8"> 
+                    <select class="form-control" id="bed_category" name="bed_category">
+                        <option value=""  {{ $bed_category == '' ? 'selected' : '' }} >Select bed category</option>
+                        @foreach ($BedCateories as $key => $BedCateory)
+                            <option value="{{ $key }}" {{ $bed_category == $key ? 'selected' : '' }}>
+                                {{ utf8_decode($BedCateory) }}
+                            </option>
+                        @endforeach
+                    </select>        
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary mb-2">
+                <span class="fa fa-search" aria-hidden="true"></span>
+                </button>
+            </form>
 
         </div>
         
@@ -36,6 +67,9 @@
             </div>
         @else
         <div class="panel-body panel-body-with-table">
+
+       
+
             <div class="table-responsive">
             
                 <table class="table table-striped ">
