@@ -37,17 +37,17 @@
         @else
         <div class="panel-body panel-body-with-table">
             <div class="table-responsive">
-
+            
                 <table class="table table-striped ">
                     <thead>
                         <tr>
                             <th>Name</th>
                             <th>Age</th>
-                            <th>Contact No</th>
+                            <th>Date of discharge</th>
                             <th>Nic</th>
                             <th>Moh Area</th>
                             <th>Bed</th>
-                            <th>User</th>
+                            <th>Bed category</th>
 
                             <th></th>
                         </tr>
@@ -57,11 +57,11 @@
                         <tr>
                             <td>{{ $patient->name }}</td>
                             <td>{{ $patient->age }}</td>
-                            <td>{{ $patient->contact_no }}</td>
+                            <td>{{ $patient->discharged }}</td>
                             <td>{{ $patient->nic }}</td>
                             <td>{{ optional($patient->MohArea)->name }}</td>
                             <td>{{ optional($patient->Bed)->bed_name }}</td>
-                            <td>{{ optional($patient->User)->name }}</td>
+                            <td>{{ isset($patient->Bed) && isset($patient->Bed->Category)? utf8_decode(optional($patient->Bed->Category)->name) :"" }}</td>
 
                             <td>
 

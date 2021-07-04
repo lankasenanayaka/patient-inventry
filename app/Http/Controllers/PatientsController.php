@@ -20,7 +20,7 @@ class PatientsController extends Controller
      */
     public function index()
     {
-        $patients = Patient::where('user_id', auth()->user()->id)->with('moharea','bed','user')->paginate(25);
+        $patients = Patient::where('user_id', auth()->user()->id)->with('moharea','bed', 'bed.category','user')->paginate(25);
 
         return view('patients.index', compact('patients'));
     }
@@ -241,6 +241,29 @@ class PatientsController extends Controller
 
 
         return $data;
+    }
+
+    public function searchPatient(Request $request){
+        $search = $request->get('q'); 
+        $patients = Patient::where('icc_no','LIKE','%'.$search.'%') 
+                    ->orWhere('nic','LIKE','%'.$search.'%')
+                    ->orWhere('name','LIKE','%'.$search.'%')
+                    ->orWhere('contact_no','LIKE','%'.$search.'%')
+                    ->select('id', 'icc_no', 'nic', 'name', 'contact_no')
+                    ->limit(50)->get();
+
+        $data = [];
+        $patients = $patients->count()>0?$patients->toArray():"";
+        if(count($patients)>0){
+            foreach($patients as $patient){            
+                $patient_lis = array_map("utf8_decode", $patient);
+                $data_list['id'] = $patient_lis['id'];                    
+                $data_list['text'] = $patient_lis['icc_no']." (nic : ".$patient_lis['nic']." name : ".$patient_lis['name']." contact_no : ".$patient_lis['contact_no'].") ";
+                $data[] = $data_list;
+            }
+        }
+
+        return response()->json(['success'=>true, 'results'=>$data]);
     }
 
 }
