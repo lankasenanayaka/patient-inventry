@@ -40,7 +40,7 @@
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-virus-slash"></i>
             </div>
-            <div class="sidebar-brand-text mx-3">Covid PDS <sup>1</sup></div>
+            <div class="sidebar-brand-text mx-3">Covid PDS </div>
         </a>
 
         <!-- Divider -->
