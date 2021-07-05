@@ -123,9 +123,9 @@
 </div>
 
 <div class="form-group {{ $errors->has('icc_no') ? 'has-error' : '' }}">
-    <label for="icc_no" class="col-md-2 control-label">Icc no</label>
+    <label for="icc_no" class="col-md-2 control-label">BHT no</label>
     <div class="col-md-10">
-        <input class="form-control" name="icc_no" type="text" id="icc_no" value="{{ old('icc_no', optional($patient)->icc_no) }}" min="0" placeholder="Enter icc_no here...">
+        <input class="form-control" name="icc_no" type="text" id="icc_no" value="{{ old('icc_no', optional($patient)->icc_no) }}" min="0" placeholder="Enter bht no here...">
         {!! $errors->first('icc_no', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
