@@ -211,7 +211,7 @@ class PatientsController extends Controller
             'moh_area_id' => 'nullable',
             'bed_id' => 'nullable',
             'user_id' => 'nullable', 
-            'nic' => 'required',
+            'nic' => 'nullable',
             'co_modibilities' => 'nullable',
             'other' => 'nullable',
             'admitted' => 'nullable',
