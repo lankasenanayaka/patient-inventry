@@ -65,14 +65,17 @@ class PatientsController extends Controller
         $request->validate([
             'name' => 'required',
             'age' => 'required',
-            'contact_no' => 'required|unique:patients,contact_no',
-            'nic' => 'required|unique:patients,nic',
+            // 'contact_no' => 'required|unique:patients,contact_no',
+            // 'nic' => 'required|unique:patients,nic',
         ]);
 
         try {
             
             $data = $this->getData($request);
             $data['user_id'] = auth()->user()->id;
+            if(isset($data['is_discharged']) && $data['is_discharged']==2){ 
+                $data['is_discharged'] =0;
+            }
             Patient::create($data);
 
             return redirect()->route('patients.patient.index')
