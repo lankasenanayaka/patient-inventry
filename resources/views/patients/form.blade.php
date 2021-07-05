@@ -30,7 +30,7 @@
 <div class="form-group {{ $errors->has('bed_id') ? 'has-error' : '' }}">
     <label for="bed_id" class="col-md-2 control-label">Bed</label>
     <div class="col-md-10">
-        <select class="form-control select2" id="bed_id" name="bed_id">
+        <select class="form-control select" id="bed_id" name="bed_id">
             <option value="" style="display: none;" {{ old('bed_id', optional($patient)->bed_id ?: '') == '' ? 'selected' : '' }} disabled selected>Select bed</option>
             @foreach ($Beds as $key => $Bed)
                 <option value="{{ $key }}" {{ old('bed_id', optional($patient)->bed_id) == $key ? 'selected' : '' }}>

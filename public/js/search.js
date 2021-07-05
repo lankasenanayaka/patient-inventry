@@ -16,6 +16,6 @@ $('#search_patient').on('select2:select', function (e) {
     
 }); 
 
-$('.select2').select2({
+$('.select').select2({
     placeholder: "Please type for search :"    
 });
