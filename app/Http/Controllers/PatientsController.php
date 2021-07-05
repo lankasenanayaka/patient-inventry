@@ -10,6 +10,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Exception;
 use App\Models\BedCategory;
+use DB;
 
 class PatientsController extends Controller
 {
@@ -46,8 +47,10 @@ class PatientsController extends Controller
      */
     public function create()
     {
-        $MohAreas = MohArea::pluck('name','id')->all();
-        $Beds = Bed::where('user_id', auth()->user()->id)->pluck('bed_name','id')->all();
+        $MohAreas = MohArea::pluck('name','id')->all(); 
+        $bed_ids = Patient::where('user_id', auth()->user()->id)->where('is_discharged', 0) ->groupBy('bed_id')->whereNotNull('bed_id')->select('bed_id')->pluck('bed_id')->all();
+
+        $Beds = Bed::where('user_id', auth()->user()->id)->whereNotIn('id', $bed_ids)->pluck('bed_name','id')->all();
         $Users = User::pluck('id','id')->all();
         
         return view('patients.create', compact('MohAreas','Beds','Users'));
