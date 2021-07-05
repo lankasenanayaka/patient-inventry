@@ -122,7 +122,7 @@ function printCertificate(){
             <tbody>
             <tr><th>Mr/Mrs/Miss/Rev : {{ $patient->name }} </th></tr>
             <tr><th>(SARS Cov - 2 RNA (PCR/RAT) was positive on : {{ $patient->positive_on }} )</th></tr>
-            <tr><th> Has successfully completed 10 days of quarantine at COVID 19 Treatment center {{ ($patient->user && $patient->user->name)?$patient->user->name:"" }} {{ ($patient->user && $patient->user->last_name)?$patient->user->last_name:"" }}</th></tr>
+            <tr><th> Has successfully completed 10 days of quarantine at {{ ($patient->user && $patient->user->name)?$patient->user->name:"" }} {{ ($patient->user && $patient->user->last_name)?$patient->user->last_name:"" }}</th></tr>
             <tr><th>DOA : {{ $patient->admitted }} DOD : {{ $patient->discharged }} </th></tr>
             <tr><th>Suggest 04 days of home quarantine (from {{ $patient->home_quarantine_from }} to {{ $patient->home_quarantine_to }}) </th></tr>
             <tr><th>&nbsp;&nbsp;</th></tr>
@@ -131,13 +131,6 @@ function printCertificate(){
             </tbody>
         </table>
         
-        
-        Has successfully completed 10 days of quarantine at COVID 19 Treatment center Covid Center Kundasale
-        DOA : 2021-07-04 DOD : 2021-07-14
-        Suggest 04 days of home quarantine (from 2021-07-14 to 2021-07-18)
-        
-        Doctor in charge
-        Covid19 treatment center Covid Center Kundasale
     </div>
 </div>
 
