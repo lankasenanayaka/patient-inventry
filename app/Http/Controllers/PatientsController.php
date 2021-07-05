@@ -115,7 +115,12 @@ class PatientsController extends Controller
     {
         $patient = Patient::where('user_id', auth()->user()->id)->findOrFail($id);
         $MohAreas = MohArea::pluck('name','id')->all();
-        $Beds = Bed::pluck('bed_name','id')->all();
+        // $Beds = Bed::pluck('bed_name','id')->all();
+
+        $bed_ids = Patient::where('user_id', auth()->user()->id)->where('id', '!=' , $id)->where('is_discharged', 0)->groupBy('bed_id')->whereNotNull('bed_id')->select('bed_id')->pluck('bed_id')->all();
+        // dd($bed_ids);
+        $Beds = Bed::where('user_id', auth()->user()->id)->whereNotIn('id', $bed_ids)->pluck('bed_name','id')->all();
+
         $Users = User::pluck('id','id')->all();
 
         return view('patients.edit', compact('patient','MohAreas','Beds','Users'));
@@ -134,9 +139,16 @@ class PatientsController extends Controller
         $request->validate([
             'name' => 'required',
             'age' => 'required',
-            'contact_no' => 'required|unique:patients,contact_no,'.$id,
-            'nic' => 'required|unique:patients,nic,'.$id,
+            // 'bed_id' => 'unique:patients,bed_id,'.$id,
+            // 'contact_no' => 'required|unique:patients,contact_no,'.$id,
+            // 'nic' => 'required|unique:patients,nic,'.$id,
         ]);
+
+        $bed_ids = Patient::where('user_id', auth()->user()->id)->where('id', '!=' , $id)->where('bed_id', $request->get('bed_id'))->where('is_discharged', 0)->groupBy('bed_id')->whereNotNull('bed_id')->pluck('bed_id')->all();
+        if(count($bed_ids) >0){
+            return back()->withInput()
+            ->withErrors(['unexpected_error' => 'Bed is allocated to other patient.']);
+        }
 
         try {
             
