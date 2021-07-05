@@ -101,7 +101,7 @@
 <div class="form-group {{ $errors->has('moh_area_id') ? 'has-error' : '' }}">
     <label for="moh_area_id" class="col-md-2 control-label">Moh Area</label>
     <div class="col-md-10">
-        <select class="form-control" id="moh_area_id" name="moh_area_id">
+        <select class="form-control select" id="moh_area_id" name="moh_area_id">
         	    <option value="" style="display: none;" {{ old('moh_area_id', optional($patient)->moh_area_id ?: '') == '' ? 'selected' : '' }} disabled selected>Select moh area</option>
         	@foreach ($MohAreas as $key => $MohArea)
 			    <option value="{{ $key }}" {{ old('moh_area_id', optional($patient)->moh_area_id) == $key ? 'selected' : '' }}>
