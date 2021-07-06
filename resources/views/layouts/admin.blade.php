@@ -323,7 +323,9 @@
         <footer class="sticky-footer bg-white">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; {{ date("Y") }}</span>
+                    <span>Copyright &copy; {{ date("Y") }}</span><br/><br/>
+                    <span>Special Thanks -  Mr. Lasantha Wickramasinghe (Entrepreneur, CEO Builtapps)</span><br/><br/>
+                    <span>Special Thanks - Mr. Isanka Maduwantha</span>
                 </div>
             </div>
         </footer>

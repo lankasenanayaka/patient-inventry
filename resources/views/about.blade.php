@@ -46,7 +46,9 @@
                         <div class="col-lg-12">
                             <h5 class="font-weight-bold">Special Credits</h5>
                             <ul>
-                                <li> Pinwath Pawara swameenwahanse.</li>
+                            <li> Pinwath Pawara swameenwahanse.</li>
+                            <li>Mr. Lasantha Wickramasinghe (Entrepreneur, CEO Builtapps)</li>
+                            <li>Mr. Isanka Maduwantha</li>
                                 <li> Desh.</li>
                                 <li> Shasheen.</li>
                             </ul>

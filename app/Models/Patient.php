@@ -36,7 +36,7 @@ class Patient extends Model
         'moh_area_id',
         'bed_id',
         'user_id', 
-        'nic' => 'required',
+        'nic',
         'co_modibilities',
         'other',
         'admitted',
