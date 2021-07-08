@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Exception;
 use App\Models\BedCategory;
 use DB;
+use PDF;
 
 class PatientsController extends Controller
 {
@@ -30,9 +31,12 @@ class PatientsController extends Controller
                 return $query->where('bed_category', '=', $bed_category);
             });
         }
+        // dd($discharged);
         if($discharged){
+            $discharged = date('Y-m-d', strtotime($discharged));
             $patients->where('discharged', $discharged);
         }
+       
 
         $patients = $patients->paginate(25);
         $BedCateories = BedCategory::pluck('name','id')->all();
@@ -104,6 +108,16 @@ class PatientsController extends Controller
         return view('patients.show', compact('patient'));
     }
 
+    public function generatePDF($id){
+        $patient = Patient::where('user_id', auth()->user()->id)->with('moharea','bed','user')->findOrFail($id);
+
+        // return view('patients.show', compact('patient'));
+        // return view('patients.certificate', compact('patient'));
+        $data = ['title' => 'Patient certificate', 'patient' => $patient];
+        $pdf = PDF::loadView('patients.certificate', $data)->setPaper('a4', 'landscape');
+        return $pdf->download('patient_'.$id.'.pdf');
+    }
+
     /**
      * Show the form for editing the specified patient.
      *
@@ -153,6 +167,7 @@ class PatientsController extends Controller
         try {
             
             $data = $this->getData($request);
+            
             if(isset($data['is_discharged']) && $data['is_discharged']==2){ 
                 $data['is_discharged'] =0;
             }

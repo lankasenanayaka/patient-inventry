@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Carbon\Carbon;
 
 class Patient extends Model
 {
@@ -165,6 +166,139 @@ class Patient extends Model
     public function getUpdatedAtAttribute($value)
     {
         return \DateTime::createFromFormat($this->getDateFormat(), $value)->format('j/n/Y g:i A');
+    }
+
+    /*
+    *modified as requested
+    */
+    public function setAdmittedAttribute($input)
+    {
+        $this->attributes['admitted'] = Carbon::createFromFormat(config('app.date_format'), $input)->format('Y-m-d');
+    }
+
+    public function getAdmittedAttribute($input)
+    {
+        return ($input)?Carbon::createFromFormat('Y-m-d', $input)->format(config('app.date_format')):null;
+    }
+
+    public function setDischargedAttribute($input)
+    {
+        $this->attributes['discharged'] = Carbon::createFromFormat(config('app.date_format'), $input)->format('Y-m-d');
+    }
+
+    public function getDischargedAttribute($input)
+    {
+        return ($input)?Carbon::createFromFormat('Y-m-d', $input)->format(config('app.date_format')):"";
+    }
+
+    public function setPositiveOnAttribute($input)
+    {
+        $this->attributes['positive_on'] = Carbon::createFromFormat(config('app.date_format'), $input)->format('Y-m-d');
+    }
+
+    public function getPositiveOnAttribute($input)
+    {
+        return ($input)?Carbon::createFromFormat('Y-m-d', $input)->format(config('app.date_format')):"";
+    }
+
+    public function setDate1Attribute($input)
+    {
+        $this->attributes['date1'] = Carbon::createFromFormat(config('app.date_format'), $input)->format('Y-m-d');
+    }
+
+    public function getDate1Attribute($input)
+    {
+        return ($input)?Carbon::createFromFormat('Y-m-d', $input)->format(config('app.date_format')):"";
+    }
+
+    public function setDate2Attribute($input)
+    {
+        $this->attributes['date2'] = Carbon::createFromFormat(config('app.date_format'), $input)->format('Y-m-d');
+    }
+
+    public function getDate2Attribute($input)
+    {
+        return ($input)?Carbon::createFromFormat('Y-m-d', $input)->format(config('app.date_format')):"";
+    }
+
+    public function setDate3Attribute($input)
+    {
+        $this->attributes['date3'] = Carbon::createFromFormat(config('app.date_format'), $input)->format('Y-m-d');
+    }
+
+    public function getDate3Attribute($input)
+    {
+        return ($input)?Carbon::createFromFormat('Y-m-d', $input)->format(config('app.date_format')):"";
+    }
+
+    public function setDate4Attribute($input)
+    {
+        $this->attributes['date4'] = Carbon::createFromFormat(config('app.date_format'), $input)->format('Y-m-d');
+    }
+
+    public function getDate4Attribute($input)
+    {
+        return ($input)?Carbon::createFromFormat('Y-m-d', $input)->format(config('app.date_format')):"";
+    }
+
+    public function setDate5Attribute($input)
+    {
+        $this->attributes['date5'] = Carbon::createFromFormat(config('app.date_format'), $input)->format('Y-m-d');
+    }
+
+    public function getDate5Attribute($input)
+    {
+        return ($input)?Carbon::createFromFormat('Y-m-d', $input)->format(config('app.date_format')):"";
+    }
+
+    public function setDate6Attribute($input)
+    {
+        $this->attributes['date6'] = Carbon::createFromFormat(config('app.date_format'), $input)->format('Y-m-d');
+    }
+
+    public function getDate6Attribute($input)
+    {
+        return ($input)?Carbon::createFromFormat('Y-m-d', $input)->format(config('app.date_format')):"";
+    }
+
+    public function setDate7Attribute($input)
+    {
+        $this->attributes['date7'] = Carbon::createFromFormat(config('app.date_format'), $input)->format('Y-m-d');
+    }
+
+    public function getDate7Attribute($input)
+    {
+        return ($input)?Carbon::createFromFormat('Y-m-d', $input)->format(config('app.date_format')):"";
+    }
+
+    public function setHomeQuarantineFromAttribute($input)
+    {
+        $this->attributes['home_quarantine_from'] = Carbon::createFromFormat(config('app.date_format'), $input)->format('Y-m-d');
+    }
+
+    public function getHomeQuarantineFromAttribute($input)
+    {
+        return ($input)?Carbon::createFromFormat('Y-m-d', $input)->format(config('app.date_format')):"";
+    }
+    
+    public function setHomeQuarantineToAttribute($input)
+    {
+        $this->attributes['home_quarantine_to'] = Carbon::createFromFormat(config('app.date_format'), $input)->format('Y-m-d');
+    }
+
+    public function getHomeQuarantineToAttribute($input)
+    {
+        return ($input)?Carbon::createFromFormat('Y-m-d', $input)->format(config('app.date_format')):"";
+    }
+
+    public function setSignDateAttribute($input)
+    {
+        $this->attributes['sign_date'] = Carbon::createFromFormat(config('app.date_format'), $input)->format('Y-m-d');
+    }
+
+    public function getSignDateAttribute($input)
+    {
+        return ($input)?Carbon::createFromFormat('Y-m-d', $input)->format(config('app.date_format')):"";
     }
 
 }

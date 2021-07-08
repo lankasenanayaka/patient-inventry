@@ -65,6 +65,7 @@ function printCertificate(){
 
         <div class="pull-right">
 
+
             <form method="POST" action="{!! route('patients.patient.destroy', $patient->id) !!}" accept-charset="UTF-8">
             <input name="_method" value="DELETE" type="hidden">
             {{ csrf_field() }}
@@ -73,14 +74,12 @@ function printCertificate(){
                         <span class="fa fa-th-list" aria-hidden="true"></span>
                     </a>
 
-                    <!-- <a href="{{ route('patients.patient.create') }}" class="btn btn-success" title="Create New Patient">
-                        <span class="fa fa-plus" aria-hidden="true"></span>
-                    </a>
-                    
-                    <a href="{{ route('patients.patient.edit', $patient->id ) }}" class="btn btn-primary" title="Edit Patient">
-                        <span class="fa fa-edit" aria-hidden="true"></span>
-                    </a> -->
                     &nbsp;&nbsp;
+                    <!-- <a href="/patients/generate-pdf/{{ $patient->id }}" target="__blank" >
+                    <button type="button"  class="btn btn-success" >
+                        PRINT
+                    </button>
+                    </a> -->
                     <button type="button" onclick="printCertificate();" class="btn btn-success" >
                         PRINT
                     </button>
@@ -91,28 +90,6 @@ function printCertificate(){
 
     </div>
 
-    <!-- <div class="panel-body">
-        <dl class="dl-horizontal">
-            <dt>Name</dt>
-            <dd>{{ $patient->name }}</dd>
-            <dt>Age</dt>
-            <dd>{{ $patient->age }}</dd>
-            <dt>Contact No</dt>
-            <dd>{{ $patient->contact_no }}</dd>
-            <dt>Address</dt>
-            <dd>{{ $patient->address }}</dd>
-            <dt>Moh Area</dt>
-            <dd>{{ optional($patient->MohArea)->name }}</dd>
-            <dt>Bed</dt>
-            <dd>{{ optional($patient->Bed)->bed_name }}</dd>
-            <dt>Created At</dt>
-            <dd>{{ $patient->created_at }}</dd>
-            <dt>Updated At</dt>
-            <dd>{{ $patient->updated_at }}</dd>
-            <dt>User</dt>
-            <dd>{{ optional($patient->User)->name }}</dd>
-        </dl>
-    </div> -->
     
     <div id="print_patient" class="panel-body" style="margin:10px; "> 
         <table id="tbl1" >
@@ -132,6 +109,8 @@ function printCertificate(){
         </table>
         
     </div>
+
+    <!-- @include('patients.certificate') -->
 </div>
 
 @endsection

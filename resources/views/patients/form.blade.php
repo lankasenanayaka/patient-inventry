@@ -117,7 +117,7 @@
 <div class="form-group {{ $errors->has('positive_on') ? 'has-error' : '' }}">
     <label for="positive_on" class="col-md-2 control-label">Positive on</label>
     <div class="col-md-10">
-        <input class="form-control" name="positive_on" type="date" id="positive_on" value="{{ old('positive_on', optional($patient)->positive_on) }}" placeholder="Enter positive date here...">
+        <input class="form-control" name="positive_on" readonly type="text" id="positive_on" value="{{ old('positive_on', optional($patient)->positive_on) }}" placeholder="Enter positive date here...">
         {!! $errors->first('positive_on', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
@@ -133,7 +133,7 @@
 <div class="form-group {{ $errors->has('admitted') ? 'has-error' : '' }}">
     <label for="admitted" class="col-md-2 control-label">Admitted</label>
     <div class="col-md-6">
-        <input class="form-control" name="admitted" type="date" id="admitted" value="{{ old('admitted', optional($patient)->admitted) }}" placeholder="Enter admit date here...">
+        <input class="form-control datepicker" readonly name="admitted" type="text" id="admitted" value="{{ old('admitted', optional($patient)->admitted) }}" placeholder="Enter admit date here...">
         {!! $errors->first('admitted', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
@@ -141,7 +141,7 @@
 <div class="form-group {{ $errors->has('discharged') ? 'has-error' : '' }}">
     <label for="discharged" class="col-md-2 control-label">Discharged</label>
     <div class="col-md-6">
-        <input class="form-control" name="discharged" type="date" id="discharged" value="{{ old('discharged', optional($patient)->discharged) }}" placeholder="Enter discharge date here...">
+        <input class="form-control datepicker" name="discharged" readonly type="text" id="discharged" value="{{ old('discharged', optional($patient)->discharged) }}" placeholder="Enter discharge date here...">
         {!! $errors->first('discharged', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
@@ -377,13 +377,13 @@
         <table border="1px" class="table-responsive" style=" margin-left: auto; margin-right: auto; overflow:auto;">
         <tr>
             <td>Date</td>
-            <td><input class="form-control" name="date1" type="date" id="date1" value="{{ old('date1', optional($patient)->date1) }}" placeholder="Enter date1 here..."></td>
-            <td><input class="form-control" name="date2" type="date" id="date2" value="{{ old('date2', optional($patient)->date2) }}" placeholder="Enter date2 here..."></td>
-            <td><input class="form-control" name="date3" type="date" id="date3" value="{{ old('date3', optional($patient)->date3) }}" placeholder="Enter date3 here..."></td>
-            <td><input class="form-control" name="date4" type="date" id="date4" value="{{ old('date4', optional($patient)->date4) }}" placeholder="Enter date4 here..."></td>
-            <td><input class="form-control" name="date5" type="date" id="date5" value="{{ old('date5', optional($patient)->date5) }}" placeholder="Enter date5 here..."></td>
-            <td><input class="form-control" name="date6" type="date" id="date6" value="{{ old('date6', optional($patient)->date6) }}" placeholder="Enter date6 here..."></td>
-            <td><input class="form-control" name="date7" type="date" id="date7" value="{{ old('date7', optional($patient)->date7) }}" placeholder="Enter date7 here..."></td>
+            <td><input class="form-control datepicker" name="date1" readonly type="text" id="date1" value="{{ old('date1', optional($patient)->date1) }}" placeholder="Enter date1 here..."></td>
+            <td><input class="form-control datepicker" name="date2" readonly type="text" id="date2" value="{{ old('date2', optional($patient)->date2) }}" placeholder="Enter date2 here..."></td>
+            <td><input class="form-control datepicker" name="date3" readonly type="text" id="date3" value="{{ old('date3', optional($patient)->date3) }}" placeholder="Enter date3 here..."></td>
+            <td><input class="form-control datepicker" name="date4" readonly type="text" id="date4" value="{{ old('date4', optional($patient)->date4) }}" placeholder="Enter date4 here..."></td>
+            <td><input class="form-control datepicker" name="date5" readonly type="text" id="date5" value="{{ old('date5', optional($patient)->date5) }}" placeholder="Enter date5 here..."></td>
+            <td><input class="form-control datepicker" name="date6" readonly type="text" id="date6" value="{{ old('date6', optional($patient)->date6) }}" placeholder="Enter date6 here..."></td>
+            <td><input class="form-control datepicker" name="date7" readonly type="text" id="date7" value="{{ old('date7', optional($patient)->date7) }}" placeholder="Enter date7 here..."></td>
         </tr>
         <tr>
             <td>PCR/RAT</td>
@@ -577,7 +577,7 @@
             <div class="form-group {{ $errors->has('home_quarantine_from') ? 'has-error' : '' }}">
                 <label for="home_quarantine_from" class="col-md-2 control-label"></label>
                 <div class="col-md-10">
-                    <input class="form-control" name="home_quarantine_from" type="date" id="home_quarantine_from" value="{{ old('home_quarantine_from', optional($patient)->home_quarantine_from) }}" placeholder="Enter home_quarantine_from here...">
+                    <input class="form-control datepicker" name="home_quarantine_from" readonly type="text" id="home_quarantine_from" value="{{ old('home_quarantine_from', optional($patient)->home_quarantine_from) }}" placeholder="Enter home_quarantine_from here...">
                     {!! $errors->first('home_quarantine_from', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
@@ -586,7 +586,7 @@
             <div class="form-group {{ $errors->has('home_quarantine_to') ? 'has-error' : '' }}">
                 <label for="home_quarantine_to" class="col-md-2 control-label"></label>
                 <div class="col-md-10">
-                    <input class="form-control" name="home_quarantine_to" type="date" id="home_quarantine_to" value="{{ old('home_quarantine_to', optional($patient)->home_quarantine_to) }}" placeholder="Enter home_quarantine_to here...">
+                    <input class="form-control datepicker" name="home_quarantine_to" readonly type="text" id="home_quarantine_to" value="{{ old('home_quarantine_to', optional($patient)->home_quarantine_to) }}" placeholder="Enter home_quarantine_to here...">
                     {!! $errors->first('home_quarantine_to', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
@@ -626,7 +626,7 @@
     <div class="col-md-6" >
         <div class="form-group {{ $errors->has('sign_date') ? 'has-error' : '' }}"> 
             <div class="col-md-12">
-                <input class="form-control" name="sign_date" type="date" id="sign_date" value="{{ old('sign_date', optional($patient)->sign_date) }}" placeholder="Enter sign_date here...">
+                <input class="form-control datepicker" name="sign_date" readonly type="text" id="sign_date" value="{{ old('sign_date', optional($patient)->sign_date) }}" placeholder="Enter sign_date here...">
                 {!! $errors->first('sign_date', '<p class="help-block">:message</p>') !!}
             </div>
         </div>

@@ -70,7 +70,8 @@ Route::group(['middleware' => 'auth'], function()
          
          Route::post('/patient/{patient}','PatientsController@discharge')
               ->name('patients.patient.discharge')->where('id', '[0-9]+');      
-         Route::get('/searchPatient','PatientsController@searchPatient');     
+         Route::get('/searchPatient','PatientsController@searchPatient');   
+         Route::get('generate-pdf/{patient}','PatientsController@generatePDF')->where('id', '[0-9]+');  
      });
 
      Route::get('/available_beds', 'PatientsController@availableBeds');

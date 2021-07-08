@@ -19,3 +19,31 @@ $('#search_patient').on('select2:select', function (e) {
 $('.select').select2({
     placeholder: "Please type for search :"    
 });
+
+$( ".datepicker" ).datepicker({
+    changeMonth: true,
+    changeYear: true,
+    dateFormat: 'd M, yy',
+    yearRange: "1900:-0" 
+});
+
+function generatePDF() {
+
+    var doc = new jsPDF({
+        orientation: 'landscape'
+    });
+
+    var elementHTML = $('#print_patient').html();
+    var specialElementHandlers = {
+        '#elementH': function (element, renderer) {
+            return true;
+        }
+    };
+    doc.fromHTML(elementHTML, 15, 15, {
+        'width': 170,
+        'elementHandlers': specialElementHandlers
+    });
+
+    // Save the PDF
+    doc.save('patient_certificate.pdf');
+}

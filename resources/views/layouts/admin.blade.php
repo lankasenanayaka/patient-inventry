@@ -19,6 +19,10 @@
     <!-- Styles -->
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/select2/select2.min.css') }}" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
+
+    <!-- <link href="{{ asset('css/bootstrap-datepicker.min.css') }}" rel="stylesheet"> -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
     <!-- Favicon -->
     <link href="{{ asset('img/favicon.png') }}" rel="icon" type="image/png">
@@ -369,6 +373,12 @@
 <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
 <script src="{{ asset('js/select2/select2.full.min.js') }}"></script>
+<!-- <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script> -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="http://demos.codexworld.com/3rd-party/jsPDF/dist/jspdf.min.js"></script>
+
 <script src="{{ asset('js/search.js') }}"></script>
+
+
 </body>
 </html>
