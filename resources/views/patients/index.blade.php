@@ -36,7 +36,7 @@
                 <div class="form-group  mx-sm-3 mb-2">
                     <label for="discharged" class="col-md-4 control-label">Discharged</label>
                     <div class="col-md-8">
-                        <input readonly class="form-control datepicker" name="discharged" type="text" id="discharged" value="{{ ($discharged) }}" placeholder="Discharge date">
+                        <input readonly class="form-control datepicker" name="discharged" type="text" id="discharged" value="{{ ($discharged)?date('d M, Y', strtotime($discharged)):"" }}" placeholder="Discharge date">
                     </div>
 
                     <!-- <div class="input-group date">
@@ -110,7 +110,7 @@
                             </td>
                             <td>{{ $patient->name }}</td>
                             <td>{{ $patient->age }}</td>
-                            <td>{{ ($patient->discharged)?$patient->discharged:"" }}</td>
+                            <td>{{ $patient->discharged }}</td>
                             <td>{{ $patient->nic }}</td>
                             <td>{{ optional($patient->MohArea)->name }}</td>
                             <td>{{ optional($patient->Bed)->bed_name }}</td>
