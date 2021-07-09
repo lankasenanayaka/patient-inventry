@@ -104,7 +104,7 @@ function printCertificate(){
             <tr><th>Suggest 04 days of home quarantine (from {{ $patient->home_quarantine_from }} to {{ $patient->home_quarantine_to }}) </th></tr>
             <tr><th>&nbsp;&nbsp;</th></tr>
             <tr><th>Doctor in charge</th></tr>
-            <tr><th>Covid19 treatment center {{ ($patient->user && $patient->user->name)?$patient->user->name:"" }} {{ ($patient->user && $patient->user->last_name)?$patient->user->last_name:"" }}</th></tr>
+            <tr><th> {{ ($patient->user && $patient->user->name)?$patient->user->name:"" }} {{ ($patient->user && $patient->user->last_name)?$patient->user->last_name:"" }}</th></tr>
             </tbody>
         </table>
         
