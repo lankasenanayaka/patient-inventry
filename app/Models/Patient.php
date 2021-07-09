@@ -173,7 +173,7 @@ class Patient extends Model
     */
     public function setAdmittedAttribute($input)
     {
-        $this->attributes['admitted'] = Carbon::createFromFormat(config('app.date_format'), $input)->format('Y-m-d');
+        $this->attributes['admitted'] = ($input)?Carbon::createFromFormat(config('app.date_format'), $input)->format('Y-m-d'):null;
     }
 
     public function getAdmittedAttribute($input)
@@ -183,7 +183,7 @@ class Patient extends Model
 
     public function setDischargedAttribute($input)
     {
-        $this->attributes['discharged'] = Carbon::createFromFormat(config('app.date_format'), $input)->format('Y-m-d');
+        $this->attributes['discharged'] = ($input)?Carbon::createFromFormat(config('app.date_format'), $input)->format('Y-m-d'):null;
     }
 
     public function getDischargedAttribute($input)
@@ -193,7 +193,7 @@ class Patient extends Model
 
     public function setPositiveOnAttribute($input)
     {
-        $this->attributes['positive_on'] = Carbon::createFromFormat(config('app.date_format'), $input)->format('Y-m-d');
+        $this->attributes['positive_on'] = ($input)?Carbon::createFromFormat(config('app.date_format'), $input)->format('Y-m-d'):null;
     }
 
     public function getPositiveOnAttribute($input)
@@ -203,7 +203,7 @@ class Patient extends Model
 
     public function setDate1Attribute($input)
     {
-        $this->attributes['date1'] = Carbon::createFromFormat(config('app.date_format'), $input)->format('Y-m-d');
+        $this->attributes['date1'] = ($input)?Carbon::createFromFormat(config('app.date_format'), $input)->format('Y-m-d'):null;
     }
 
     public function getDate1Attribute($input)
@@ -213,7 +213,7 @@ class Patient extends Model
 
     public function setDate2Attribute($input)
     {
-        $this->attributes['date2'] = Carbon::createFromFormat(config('app.date_format'), $input)->format('Y-m-d');
+        $this->attributes['date2'] = ($input)?Carbon::createFromFormat(config('app.date_format'), $input)->format('Y-m-d'):null;
     }
 
     public function getDate2Attribute($input)
@@ -223,7 +223,7 @@ class Patient extends Model
 
     public function setDate3Attribute($input)
     {
-        $this->attributes['date3'] = Carbon::createFromFormat(config('app.date_format'), $input)->format('Y-m-d');
+        $this->attributes['date3'] = ($input)?Carbon::createFromFormat(config('app.date_format'), $input)->format('Y-m-d'):null;
     }
 
     public function getDate3Attribute($input)
@@ -233,7 +233,7 @@ class Patient extends Model
 
     public function setDate4Attribute($input)
     {
-        $this->attributes['date4'] = Carbon::createFromFormat(config('app.date_format'), $input)->format('Y-m-d');
+        $this->attributes['date4'] = ($input)?Carbon::createFromFormat(config('app.date_format'), $input)->format('Y-m-d'):null;
     }
 
     public function getDate4Attribute($input)
@@ -243,7 +243,7 @@ class Patient extends Model
 
     public function setDate5Attribute($input)
     {
-        $this->attributes['date5'] = Carbon::createFromFormat(config('app.date_format'), $input)->format('Y-m-d');
+        $this->attributes['date5'] = ($input)?Carbon::createFromFormat(config('app.date_format'), $input)->format('Y-m-d'):null;
     }
 
     public function getDate5Attribute($input)
@@ -253,7 +253,7 @@ class Patient extends Model
 
     public function setDate6Attribute($input)
     {
-        $this->attributes['date6'] = Carbon::createFromFormat(config('app.date_format'), $input)->format('Y-m-d');
+        $this->attributes['date6'] = ($input)?Carbon::createFromFormat(config('app.date_format'), $input)->format('Y-m-d'):null;
     }
 
     public function getDate6Attribute($input)
@@ -263,7 +263,7 @@ class Patient extends Model
 
     public function setDate7Attribute($input)
     {
-        $this->attributes['date7'] = Carbon::createFromFormat(config('app.date_format'), $input)->format('Y-m-d');
+        $this->attributes['date7'] = ($input)?Carbon::createFromFormat(config('app.date_format'), $input)->format('Y-m-d'):null;
     }
 
     public function getDate7Attribute($input)
@@ -273,7 +273,7 @@ class Patient extends Model
 
     public function setHomeQuarantineFromAttribute($input)
     {
-        $this->attributes['home_quarantine_from'] = Carbon::createFromFormat(config('app.date_format'), $input)->format('Y-m-d');
+        $this->attributes['home_quarantine_from'] = ($input)?Carbon::createFromFormat(config('app.date_format'), $input)->format('Y-m-d'):null;
     }
 
     public function getHomeQuarantineFromAttribute($input)
@@ -283,7 +283,7 @@ class Patient extends Model
     
     public function setHomeQuarantineToAttribute($input)
     {
-        $this->attributes['home_quarantine_to'] = Carbon::createFromFormat(config('app.date_format'), $input)->format('Y-m-d');
+        $this->attributes['home_quarantine_to'] = ($input)?Carbon::createFromFormat(config('app.date_format'), $input)->format('Y-m-d'):null;
     }
 
     public function getHomeQuarantineToAttribute($input)
@@ -293,7 +293,7 @@ class Patient extends Model
 
     public function setSignDateAttribute($input)
     {
-        $this->attributes['sign_date'] = Carbon::createFromFormat(config('app.date_format'), $input)->format('Y-m-d');
+        $this->attributes['sign_date'] = ($input)?Carbon::createFromFormat(config('app.date_format'), $input)->format('Y-m-d'):null;
     }
 
     public function getSignDateAttribute($input)
