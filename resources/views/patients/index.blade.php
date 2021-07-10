@@ -84,10 +84,11 @@
                             <th>Name</th>
                             <th>Age</th>
                             <th>Date of discharge</th>
-                            <th>Nic</th>
+                            <th>TP NO</th>
                             <th>Moh Area</th>
                             <th>Bed</th>
-                            <th>Bed category</th>
+                            <th>BHT</th>
+                            <th>Destination</th>
 
                             <th></th>
                         </tr>
@@ -111,10 +112,11 @@
                             <td>{{ $patient->name }}</td>
                             <td>{{ $patient->age }}</td>
                             <td>{{ $patient->discharged }}</td>
-                            <td>{{ $patient->nic }}</td>
+                            <td>{{ $patient->contact_no }}</td>
                             <td>{{ optional($patient->MohArea)->name }}</td>
                             <td>{{ optional($patient->Bed)->bed_name }}</td>
-                            <td>{{ isset($patient->Bed) && isset($patient->Bed->Category)? utf8_decode(optional($patient->Bed->Category)->name) :"" }}</td>
+                            <td>{{ $patient->icc_no}}</td>
+                            <td>{{ $patient->destination}}</td>
 
                             <td>
 
