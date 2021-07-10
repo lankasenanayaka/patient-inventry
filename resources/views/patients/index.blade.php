@@ -38,13 +38,30 @@
                     <div class="col-md-8">
                         <input readonly class="form-control datepicker" name="discharged" type="text" id="discharged" value="{{ ($discharged)?date('d M, Y', strtotime($discharged)):"" }}" placeholder="Discharge date">
                     </div>
-
-                    <!-- <div class="input-group date">
-                        <input type="text" class="form-control datepicker" >
-                    </div> -->
                 </div>
 
                 <div class="form-group mx-sm-3 mb-2">
+                    <label for="bed_id" class="col-md-4 control-label">Bed</label>
+                    <div class="col-md-8">
+                        <select class="form-control select" id="bed_id" name="bed_id">
+                            <option value="" style="display: none;" {{ $bed_id == '' ? 'selected' : '' }} disabled selected>Select bed</option>
+                            @foreach ($Beds as $key => $Bed)
+                                <option value="{{ $key }}" {{ $bed_id == $key ? 'selected' : '' }}>
+                                {{ $Bed }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group mx-sm-3 mb-2">
+                    <label for="icc_no" class="col-md-2 control-label">BHT no</label>
+                    <div class="col-md-10">
+                        <input class="form-control" name="icc_no" type="text" id="icc_no" value="{{ $icc_no }}" min="0" placeholder="Enter bht no here...">
+                    </div>
+                </div>
+
+                <!-- <div class="form-group mx-sm-3 mb-2">
                     <label for="bed_category" class="col-md-4 control-label">Bed category</label>
                     <div class="col-md-8"> 
                     <select class="form-control" id="bed_category" name="bed_category">
@@ -56,7 +73,7 @@
                         @endforeach
                     </select>        
                     </div>
-                </div>
+                </div> -->
 
                 <button type="submit" class="btn btn-primary mb-2">
                 <span class="fa fa-search" aria-hidden="true"></span>

@@ -25,12 +25,24 @@ class PatientsController extends Controller
     {
         $bed_category = $request->get('bed_category');  
         $discharged = $request->get('discharged');
+        $bed_id = $request->get('bed_id');
+        $icc_no = $request->get('icc_no');
+
         $patients = Patient::where('user_id', auth()->user()->id)->with('moharea','bed', 'bed.category','user');
         if($bed_category){            
             $patients->whereHas('bed', function ($query) use ($bed_category) {
                 return $query->where('bed_category', '=', $bed_category);
             });
         }
+
+        if($bed_id){
+            $patients->where('bed_id', $bed_id);
+        }
+
+        if($icc_no){
+            $patients->where('icc_no', 'LIKE', "%".$icc_no."%");
+        }
+
         // dd($discharged);
         if($discharged){
             $discharged = date('Y-m-d', strtotime($discharged));
@@ -40,8 +52,9 @@ class PatientsController extends Controller
 
         $patients = $patients->paginate(25);
         $BedCateories = BedCategory::pluck('name','id')->all();
-        
-        return view('patients.index', compact('patients','BedCateories','bed_category','discharged'));
+        $Beds = Bed::where('user_id', auth()->user()->id)->pluck('bed_name','id')->all();
+
+        return view('patients.index', compact('patients','BedCateories','bed_category','discharged','bed_id','icc_no','Beds'));
     }
 
     /**
