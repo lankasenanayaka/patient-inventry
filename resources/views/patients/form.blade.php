@@ -163,7 +163,7 @@
 <div class="form-group {{ $errors->has('diagnosis') ? 'has-error' : '' }}">
     <label for="diagnosis" class="col-md-2 control-label">Diagnosis</label>
     <div class="col-md-10">
-        <input class="form-control" name="diagnosis" type="text" id="diagnosis" value="{{ old('diagnosis', optional($patient)->diagnosis) }}" placeholder="Enter diagnosis date here...">
+        <input class="form-control" name="diagnosis" type="text" id="diagnosis" value="{{ old('diagnosis', optional($patient)->diagnosis) }}" placeholder="Enter diagnosis here...">
         {!! $errors->first('diagnosis', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
