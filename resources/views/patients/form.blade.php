@@ -117,7 +117,7 @@
 <div class="form-group {{ $errors->has('positive_on') ? 'has-error' : '' }}">
     <label for="positive_on" class="col-md-2 control-label">Positive on</label>
     <div class="col-md-10">
-        <input class="form-control" name="positive_on" readonly type="text" id="positive_on" value="{{ old('positive_on', optional($patient)->positive_on) }}" placeholder="Enter positive date here...">
+        <input class="form-control datepicker" name="positive_on" readonly type="text" id="positive_on" value="{{ old('positive_on', optional($patient)->positive_on) }}" placeholder="Enter positive date here...">
         {!! $errors->first('positive_on', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
@@ -132,7 +132,7 @@
 
 <div class="form-group {{ $errors->has('admitted') ? 'has-error' : '' }}">
     <label for="admitted" class="col-md-2 control-label">Admitted</label>
-    <div class="col-md-6">
+    <div class="col-md-10">
         <input class="form-control datepicker" readonly name="admitted" type="text" id="admitted" value="{{ old('admitted', optional($patient)->admitted) }}" placeholder="Enter admit date here...">
         {!! $errors->first('admitted', '<p class="help-block">:message</p>') !!}
     </div>
@@ -140,7 +140,7 @@
 
 <div class="form-group {{ $errors->has('discharged') ? 'has-error' : '' }}">
     <label for="discharged" class="col-md-2 control-label">Discharged</label>
-    <div class="col-md-6">
+    <div class="col-md-10">
         <input class="form-control datepicker" name="discharged" readonly type="text" id="discharged" value="{{ old('discharged', optional($patient)->discharged) }}" placeholder="Enter discharge date here...">
         {!! $errors->first('discharged', '<p class="help-block">:message</p>') !!}
     </div>
