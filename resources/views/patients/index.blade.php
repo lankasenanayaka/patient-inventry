@@ -142,13 +142,17 @@
                                 {{ csrf_field() }}
 
                                     <div class="btn-group btn-group-xs pull-right" role="group">
+                                        <button type="button" style="border: 1px solid #cbd5e0;" onclick="printCertificate('{{ url('patients/generate-pdf/'.$patient->id ) }}');" class="btn btn-default" title="Print certificate">
+                                            <span class="fa fa-print" aria-hidden="true"></span>
+                                        </button>
+                                        &nbsp;&nbsp;
                                         <a href="{{ route('patients.patient.show', $patient->id ) }}" class="btn btn-info" title="Show Patient">
                                             <span class="fa fa-eye" aria-hidden="true"></span>
                                         </a>
                                         <a href="{{ route('patients.patient.edit', $patient->id ) }}" class="btn btn-primary" title="Edit Patient">
                                             <span class="fa fa-edit" aria-hidden="true"></span>
                                         </a>
-
+                                        
                                         <button type="submit" class="btn btn-danger" title="Delete Patient" onclick="return confirm(&quot;Click Ok to delete Patient.&quot;)">
                                             <span class="fa fa-trash" aria-hidden="true"></span>
                                         </button>

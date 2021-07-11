@@ -124,11 +124,10 @@ class PatientsController extends Controller
     public function generatePDF($id){
         $patient = Patient::where('user_id', auth()->user()->id)->with('moharea','bed','user')->findOrFail($id);
 
-        // return view('patients.show', compact('patient'));
-        // return view('patients.certificate', compact('patient'));
-        $data = ['title' => 'Patient certificate', 'patient' => $patient];
-        $pdf = PDF::loadView('patients.certificate', $data)->setPaper('a4', 'landscape');
-        return $pdf->download('patient_'.$id.'.pdf');
+        return view('patients.certificate', compact('patient'));
+        // $data = ['title' => 'Patient certificate', 'patient' => $patient];
+        // $pdf = PDF::loadView('patients.certificate', $data)->setPaper('a4', 'landscape');
+        // return $pdf->download('patient_'.$id.'.pdf');
     }
 
     /**
