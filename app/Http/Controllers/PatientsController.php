@@ -12,6 +12,8 @@ use Exception;
 use App\Models\BedCategory;
 use DB;
 use PDF;
+use Maatwebsite\Excel\Facades\Excel;
+use Carbon\Carbon;
 
 class PatientsController extends Controller
 {
@@ -27,6 +29,19 @@ class PatientsController extends Controller
         $discharged = $request->get('discharged');
         $bed_id = $request->get('bed_id');
         $icc_no = $request->get('icc_no');
+        $download_url = "";
+        if($bed_category){
+            $download_url .= "&bed_category=".$bed_category;
+        }
+        if($bed_id){
+            $download_url .= "&bed_id=".$bed_id;
+        }
+        if($icc_no){
+            $download_url .= "&icc_no=".$icc_no;
+        }
+        if($discharged){
+            $download_url .= "&discharged=".$discharged;
+        }
 
         $patients = Patient::where('user_id', auth()->user()->id)->with('moharea','bed', 'bed.category','user');
         if($bed_category){            
@@ -48,13 +63,12 @@ class PatientsController extends Controller
             $discharged = date('Y-m-d', strtotime($discharged));
             $patients->where('discharged', $discharged);
         }
-       
 
         $patients = $patients->paginate(25);
         $BedCateories = BedCategory::pluck('name','id')->all();
         $Beds = Bed::where('user_id', auth()->user()->id)->pluck('bed_name','id')->all();
 
-        return view('patients.index', compact('patients','BedCateories','bed_category','discharged','bed_id','icc_no','Beds'));
+        return view('patients.index', compact('patients','BedCateories','bed_category','discharged','bed_id','icc_no','Beds','download_url'));
     }
 
     /**
@@ -96,6 +110,8 @@ class PatientsController extends Controller
             if(isset($data['is_discharged']) && $data['is_discharged']==2){ 
                 $data['is_discharged'] =0;
             }
+
+            $data = $this->setDischargeDate($data);
             Patient::create($data);
 
             return redirect()->route('patients.patient.index')
@@ -123,11 +139,54 @@ class PatientsController extends Controller
 
     public function generatePDF($id){
         $patient = Patient::where('user_id', auth()->user()->id)->with('moharea','bed','user')->findOrFail($id);
-
         return view('patients.certificate', compact('patient'));
         // $data = ['title' => 'Patient certificate', 'patient' => $patient];
         // $pdf = PDF::loadView('patients.certificate', $data)->setPaper('a4', 'landscape');
         // return $pdf->download('patient_'.$id.'.pdf');
+    }
+
+    public function download(Request $request){
+        $bed_category = $request->get('bed_category');  
+        $bed_id = $request->get('bed_id');
+        $icc_no = $request->get('icc_no');
+        $discharged = $request->get('discharged');
+
+        $patients = Patient::where('user_id', auth()->user()->id)->with('moharea','bed', 'bed.category','user');
+        if($bed_category){            
+            $patients->whereHas('bed', function ($query) use ($bed_category) {
+                return $query->where('bed_category', '=', $bed_category);
+            });
+        }
+        if($bed_id){
+            $patients->where('bed_id', $bed_id);
+        }
+        if($icc_no){
+            $patients->where('icc_no', 'LIKE', "%".$icc_no."%");
+        }
+        if($discharged){
+            $discharged = date('Y-m-d', strtotime($discharged));
+            $patients->where('discharged', $discharged);
+        }
+        else{
+            $discharged = date('Y-m-d');
+        }
+        $patients = $patients->get();
+
+        $data =[];
+        
+        foreach($patients as $patient){
+            $data[] = [
+            $patient->name, 
+            $patient->age, 
+            $patient->discharged,
+            $patient->contact_no, 
+            optional($patient->MohArea)->name, 
+            optional($patient->Bed)->bed_name, 
+            $patient->icc_no,
+            $patient->destination
+            ];
+        }
+        return Excel::download(new \App\Exports\CollectionExport($data), 'Patient list '.$discharged.'.xlsx');
     }
 
     /**
@@ -185,6 +244,8 @@ class PatientsController extends Controller
             }
             $data['user_id'] = auth()->user()->id;
             $patient = Patient::where('user_id', auth()->user()->id)->findOrFail($id);
+
+            $data = $this->setDischargeDate($data);
             // dd($data);
             $patient->update($data);
 
@@ -195,6 +256,16 @@ class PatientsController extends Controller
             return back()->withInput()
                 ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
         }        
+    }
+
+    public function setDischargeDate($data){
+        if(isset($data['positive_on']) && $data['positive_on']){            
+            $data['admitted'] = Carbon::createFromFormat(config('app.date_format'), $data['positive_on'])->addDay()->format(config('app.date_format'));
+            $data['discharged'] = Carbon::createFromFormat(config('app.date_format'), $data['positive_on'])->addDays(10)->format(config('app.date_format'));
+            $data['home_quarantine_from'] = Carbon::createFromFormat(config('app.date_format'), $data['positive_on'])->addDays(11)->format(config('app.date_format'));
+            $data['home_quarantine_to'] = Carbon::createFromFormat(config('app.date_format'), $data['positive_on'])->addDays(14)->format(config('app.date_format'));
+        }
+        return $data;
     }
 
     /**

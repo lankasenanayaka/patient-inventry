@@ -54,9 +54,9 @@
                     </div>
                 </div>
 
-                <div class="form-group mx-sm-3 mb-2">
+                <div class="form-group mx-sm-2 mb-2">
                     <label for="icc_no" class="col-md-2 control-label">BHT no</label>
-                    <div class="col-md-10">
+                    <div class="col-md-8">
                         <input class="form-control" name="icc_no" type="text" id="icc_no" value="{{ $icc_no }}" min="0" placeholder="Enter bht no here...">
                     </div>
                 </div>
@@ -74,8 +74,14 @@
                     </select>        
                     </div>
                 </div> -->
-
-                <button type="submit" class="btn btn-primary mb-2">
+                
+                @if($download_url!="")
+                <button type="button" style="border: 1px solid #cbd5e0;" class="btn btn-default mb-2">                
+                    <a href="{{ url('patients/download?'.$download_url) }}"><span class="fa fa-download" aria-hidden="true"></span></a>
+                </button>
+                &nbsp;&nbsp;
+                @endif
+                <button type="submit" class="btn btn-primary mb-2">                
                 <span class="fa fa-search" aria-hidden="true"></span>
                 </button>
             </form>
