@@ -76,9 +76,11 @@
                 </div> -->
                 
                 @if($download_url!="")
+                <a href="{{ url('patients/download?'.$download_url) }}">
                 <button type="button" style="border: 1px solid #cbd5e0;" class="btn btn-default mb-2">                
-                    <a href="{{ url('patients/download?'.$download_url) }}"><span class="fa fa-download" aria-hidden="true"></span></a>
+                    <span class="fa fa-download" aria-hidden="true"></span>
                 </button>
+                </a>
                 &nbsp;&nbsp;
                 @endif
                 <button type="submit" class="btn btn-primary mb-2">                

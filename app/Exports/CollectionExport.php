@@ -33,7 +33,8 @@ class CollectionExport implements FromCollection, WithHeadings
             'Name', 
             'Bed', 
             'BHT no',
-            'Destination'
+            'Destination',
+            'Transport'
             ];
     }
 

@@ -183,10 +183,11 @@ class PatientsController extends Controller
             optional($patient->MohArea)->name, 
             optional($patient->Bed)->bed_name, 
             $patient->icc_no,
-            $patient->destination
+            $patient->destination,
+            ""
             ];
         }
-        return Excel::download(new \App\Exports\CollectionExport($data), 'Patient list '.$discharged.'.xlsx');
+        return Excel::download(new \App\Exports\CollectionExport($data), 'Patient discharge summary '.$discharged.'.xlsx');
     }
 
     /**
