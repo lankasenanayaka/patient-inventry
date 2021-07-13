@@ -261,7 +261,7 @@ class PatientsController extends Controller
 
     public function setDischargeDate($data){
         if(isset($data['positive_on']) && $data['positive_on']){            
-            $data['admitted'] = Carbon::createFromFormat(config('app.date_format'), $data['positive_on'])->addDay()->format(config('app.date_format'));
+            // $data['admitted'] = Carbon::createFromFormat(config('app.date_format'), $data['positive_on'])->addDay()->format(config('app.date_format'));
             $data['discharged'] = Carbon::createFromFormat(config('app.date_format'), $data['positive_on'])->addDays(10)->format(config('app.date_format'));
             $data['home_quarantine_from'] = Carbon::createFromFormat(config('app.date_format'), $data['positive_on'])->addDays(11)->format(config('app.date_format'));
             $data['home_quarantine_to'] = Carbon::createFromFormat(config('app.date_format'), $data['positive_on'])->addDays(14)->format(config('app.date_format'));
