@@ -204,13 +204,13 @@
     <label for="type_of_vaccine" class="col-md-12 control-label">Type of vaccine</label>
     <div class="col-md-10">
         <label class="checkbox-inline">
-            <input type="checkbox" name="sputnik" id="sputnik" value="1" {{ old('sputnik', optional($patient)->sputnik)==1?'checked':'' }} >&nbsp;&nbsp;Covishield
+            <input type="checkbox" name="sputnik" id="sputnik" value="1" {{ old('sputnik', optional($patient)->sputnik)==1?'checked':'' }} >&nbsp;&nbsp;Sputnik-V
         </label> &nbsp;&nbsp;
         <label class="checkbox-inline">
-            <input type="checkbox" name="sinopharm" id="sinopharm" value="1" {{ old('sinopharm', optional($patient)->sinopharm)==1?'checked':'' }} >&nbsp;&nbsp;Sputnik-V
+            <input type="checkbox" name="sinopharm" id="sinopharm" value="1" {{ old('sinopharm', optional($patient)->sinopharm)==1?'checked':'' }} >&nbsp;&nbsp;Sinopharm
         </label> &nbsp;&nbsp;
         <label class="checkbox-inline">
-            <input type="checkbox" name="covishield" id="covishield" value="1" {{ old('covishield', optional($patient)->covishield)==1?'checked':'' }} >&nbsp;&nbsp;Sinopharm
+            <input type="checkbox" name="covishield" id="covishield" value="1" {{ old('covishield', optional($patient)->covishield)==1?'checked':'' }} >&nbsp;&nbsp;Covishield
         </label>
     </div>
 </div>
