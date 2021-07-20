@@ -72,6 +72,7 @@ Route::group(['middleware' => 'auth'], function()
               ->name('patients.patient.discharge')->where('id', '[0-9]+');      
          Route::get('/searchPatient','PatientsController@searchPatient');   
          Route::get('generate-pdf/{patient}','PatientsController@generatePDF')->where('id', '[0-9]+'); 
+         Route::get('print/{patient}','PatientsController@printAdmission')->where('id', '[0-9]+'); 
            
          Route::get('/download', 'PatientsController@download');
      });

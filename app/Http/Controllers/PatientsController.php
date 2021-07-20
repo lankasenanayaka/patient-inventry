@@ -112,9 +112,10 @@ class PatientsController extends Controller
             }
 
             $data = $this->setDischargeDate($data);
-            Patient::create($data);
+            $patient = Patient::create($data);
 
             return redirect()->route('patients.patient.index')
+                ->with('patient_id', $patient->id)
                 ->with('success_message', 'Patient was successfully added.');
         } catch (Exception $exception) {
 
@@ -143,6 +144,11 @@ class PatientsController extends Controller
         // $data = ['title' => 'Patient certificate', 'patient' => $patient];
         // $pdf = PDF::loadView('patients.certificate', $data)->setPaper('a4', 'landscape');
         // return $pdf->download('patient_'.$id.'.pdf');
+    }
+
+    public function printAdmission($id){
+        $patient = Patient::where('user_id', auth()->user()->id)->with('moharea','bed','user')->findOrFail($id);
+        return view('patients.print', compact('patient'));
     }
 
     public function download(Request $request){
@@ -251,6 +257,7 @@ class PatientsController extends Controller
             $patient->update($data);
 
             return redirect()->route('patients.patient.index')
+                ->with('patient_id', $id)
                 ->with('success_message', 'Patient was successfully updated.');
         } catch (Exception $exception) {
 

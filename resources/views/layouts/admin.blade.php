@@ -378,7 +378,10 @@
 <script src="http://demos.codexworld.com/3rd-party/jsPDF/dist/jspdf.min.js"></script>
 
 <script src="{{ asset('js/search.js') }}"></script>
-
-
+@if(Session::has('patient_id'))
+    <script type="text/javascript">
+    printCertificate('{{ url('patients/print/'.session('patient_id') ) }}');
+    </script>
+@endif
 </body>
 </html>
