@@ -28,7 +28,7 @@
          border-collapse: collapse;
       }
       table td{
-         padding-top:8px;
+         padding-top:4px;
       }
       </style>
    </head>
@@ -78,8 +78,8 @@
                         </tr>
                         <tr>
                            <td>TIME</td>
-                           <td>{{ ($patient->icc_no)?$patient->icc_no:"" }}</td>
-                           <td>{{ ($patient->icc_no)?$patient->icc_no:"" }}</td>
+                           <td></td>
+                           <td></td>
                            <td></td>
                         </tr>
                      </tbody>  
