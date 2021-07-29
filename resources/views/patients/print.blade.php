@@ -10,24 +10,30 @@
       <link href="http://fonts.cdnfonts.com/css/hermona" rel="stylesheet"/>
       <link href="http://fonts.cdnfonts.com/css/harlow-solid-italic" rel="stylesheet"/>
       <style>
-      body{margin: 0px; background-color: rgb(253, 247, 242);}main{max-width: 1024px; margin: 20px; padding: 50px; border: 4px dotted brown;}h1{margin-top: 0px; text-align: center; font-size: 4rem; font-family: "Hermona", sans-serif; font-weight: bolder; color: brown; -webkit-text-stroke: 0.01px white; text-shadow: 0px 3px 5px brown; letter-spacing: 0.075em;}p{text-align: center; font-size: 1.25rem; margin: 10px 0px; color: rgb(71, 71, 71); font-family: sans-serif; letter-spacing: 0.025em;}h4{font-family: "Hermona", sans-serif; text-align: center; color: rgb(3, 3, 129); font-weight: 400; font-size: 2rem; letter-spacing: 0.1rem; margin: 20px auto;}.bottom{width: 100%; margin: auto; background: brown; padding: 4px 0px; border-radius: 9999px;}.bottom p{font-size: 2rem !important; margin: 1px 0px !important; color: white !important; font-family: "Harlow Solid Italic", sans-serif !important;}
+      /* body{margin: 0px; background-color: rgb(253, 247, 242);}main{max-width: 1024px; margin: 20px; padding: 50px; border: 4px dotted brown;}h1{margin-top: 0px; text-align: center; font-size: 4rem; font-family: "Hermona", sans-serif; font-weight: bolder; color: brown; -webkit-text-stroke: 0.01px white; text-shadow: 0px 3px 5px brown; letter-spacing: 0.075em;}p{text-align: center; font-size: 1.25rem; margin: 10px 0px; color: rgb(71, 71, 71); font-family: sans-serif; letter-spacing: 0.025em;}h4{font-family: "Hermona", sans-serif; text-align: center; color: rgb(3, 3, 129); font-weight: 400; font-size: 2rem; letter-spacing: 0.1rem; margin: 20px auto;}.bottom{width: 100%; margin: auto; background: brown; padding: 4px 0px; border-radius: 9999px;}.bottom p{font-size: 2rem !important; margin: 1px 0px !important; color: white !important; font-family: "Harlow Solid Italic", sans-serif !important;}
       .title{
          margin-top: 0px; text-align: center; font-size: 2rem; font-family: "Hermona", sans-serif; font-weight: bolder; color: brown; -webkit-text-stroke: 0.01px white; text-shadow: 0px 3px 5px brown; letter-spacing: 0.075em;
       }
       .footer-text{font-size: 2rem !important; margin: 1px 0px !important; color: white !important; font-family: "Harlow Solid Italic", sans-serif !important;}
+      */
       #table1 tr td {
          border: 1px solid black;
+         padding-top:8px;
       }
       #table2 tr td {
          border: 1px solid black;
+         padding-top:8px;
       }
       table {
          border-collapse: collapse;
       }
+      table td{
+         padding-top:8px;
+      }
       </style>
    </head>
    <body>
-      <main id="print_patient" >
+      <main id="print_patient" style="height:900px" >
          <table id="tbl1" align="center" height="400" >
             <thead>
             <tr><th colspan="3"> {{ ($patient->user && $patient->user->name)?$patient->user->name:"" }} <br/> {{ ($patient->user && $patient->user->last_name)?$patient->user->last_name:"" }} </th></tr>
@@ -42,7 +48,7 @@
             <tr>
                <td colspan="1">
                   <table id="table1">
-                     <tbody >
+                     <tbody >                        
                         <tr>
                            <td>BHT</td><td>{{ ($patient->icc_no)?$patient->icc_no:"" }}</td>
                         </tr>
@@ -62,17 +68,19 @@
                   <table id="table2">
                      <tbody>
                         <tr>
-                           <td>ADMISSION</td><td>DISCHARGE</td><td>TRANSFER</td>
+                           <td></td><td>ADMISSION</td><td>DISCHARGE</td><td>TRANSFER</td>
                         </tr>
                         <tr>
                            <td>DATE</td>
                            <td>{{ ($patient->admitted)?$patient->admitted:"" }}</td>
                            <td>{{ ($patient->discharged)?$patient->discharged:"" }}</td>
+                           <td></td>
                         </tr>
                         <tr>
                            <td>TIME</td>
                            <td>{{ ($patient->icc_no)?$patient->icc_no:"" }}</td>
                            <td>{{ ($patient->icc_no)?$patient->icc_no:"" }}</td>
+                           <td></td>
                         </tr>
                      </tbody>  
                   </table>
@@ -149,7 +157,24 @@
             </tr>
             <tr>
                <td> 2. PAST MEDICAL HISTORY :‐ </td>
-               <td> IHD : &nbsp;&nbsp; DM : &nbsp;&nbsp; HTN : &nbsp;&nbsp; DLD : &nbsp;&nbsp; BA : &nbsp;&nbsp;</td>
+               <td> 
+                  <label class="checkbox-inline">
+                     IHD : <input type="checkbox" name="sputnik" id="sputnik" value="1" >
+                  </label> &nbsp;&nbsp;
+                  <label class="checkbox-inline">
+                     DM : <input type="checkbox" name="sinopharm" id="sinopharm" value="1" >
+                  </label> &nbsp;&nbsp;
+                  <label class="checkbox-inline">
+                     HTN : <input type="checkbox" name="covishield" id="covishield" value="1"  >
+                  </label>
+                  <label class="checkbox-inline">
+                     DLD : <input type="checkbox" name="covishield" id="covishield" value="1"  >
+                  </label>
+                  <label class="checkbox-inline">
+                     BA : <input type="checkbox" name="covishield" id="covishield" value="1"  >
+                  </label>
+                  <!-- IHD : &nbsp;&nbsp; DM : &nbsp;&nbsp; HTN : &nbsp;&nbsp; DLD : &nbsp;&nbsp; BA : &nbsp;&nbsp; -->
+               </td>
             </tr>
             <tr>
                <td> 3. PAST SURGICAL HISTORY :‐ </td>
@@ -157,7 +182,17 @@
             </tr>
             <tr>
                <td> 4. ALLERGY :‐ </td>
-               <td> DRUGS : &nbsp;&nbsp; FOODS : &nbsp;&nbsp; PLASTERS : &nbsp;&nbsp; </td>
+               <td> 
+                  <label class="checkbox-inline">
+                  DRUGS : <input type="checkbox" name="sputnik" id="sputnik" value="1" >
+                  </label> &nbsp;&nbsp;
+                  <label class="checkbox-inline">
+                  FOODS : <input type="checkbox" name="sinopharm" id="sinopharm" value="1" >
+                  </label> &nbsp;&nbsp;
+                  <label class="checkbox-inline">
+                  PLASTERS : <input type="checkbox" name="covishield" id="covishield" value="1"  >
+                  </label>                  
+               </td>
             </tr>
             <tr>
                <td> 5. MANAGEMENT :‐ </td>
@@ -168,8 +203,12 @@
                <td> </td>
             </tr>
             <tr>
-               <td>ON ADMISSION :‐ </td>
-               <td>
+               <td colspan="3"> 
+                  <h3>ON ADMISSION</h3>
+               </td>
+            </tr>
+            <tr>
+               <td colspan="3">
                   SPO2:‐ {{ ($patient->sp1)?$patient->sp1:"" }} % PR:‐ {{ ($patient->pr1)?$patient->pr1:"" }} bpm BP:‐ {{ ($patient->bp1)?$patient->bp1:"" }} mmhg RR:‐ {{ ($patient->res1)?$patient->res1:"" }} bpm Temp:‐ {{ ($patient->tem1)?$patient->tem1:"" }} c  
                </td>
             </tr>
