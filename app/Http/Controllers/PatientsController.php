@@ -272,6 +272,32 @@ class PatientsController extends Controller
             if(!isset($data['covishield'])){ 
                 $data['covishield'] =null;
             }
+
+
+            if(!isset($data['ihd'])){ 
+                $data['ihd'] =null;
+            }
+            if(!isset($data['dm'])){ 
+                $data['dm'] =null;
+            }
+            if(!isset($data['htn'])){ 
+                $data['htn'] =null;
+            }
+            if(!isset($data['dld'])){ 
+                $data['dld'] =null;
+            }
+            if(!isset($data['ba'])){ 
+                $data['ba'] =null;
+            }
+            if(!isset($data['drugs'])){ 
+                $data['drugs'] =null;
+            }
+            if(!isset($data['foods'])){ 
+                $data['foods'] =null;
+            }
+            if(!isset($data['plasters'])){ 
+                $data['plasters'] =null;
+            }
             
             // dd($data);
             $patient->update($data);
@@ -416,6 +442,14 @@ class PatientsController extends Controller
             'moderna' => 'nullable', 
             'faizer' => 'nullable',
             'astrazenica' => 'nullable',
+            'ihd' => 'nullable',
+            'dm' => 'nullable',
+            'htn' => 'nullable',
+            'dld' => 'nullable',
+            'ba' => 'nullable',
+            'drugs' => 'nullable',
+            'foods' => 'nullable',
+            'plasters' => 'nullable',
         ];
         
         $data = $request->validate($rules);

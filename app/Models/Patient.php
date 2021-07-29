@@ -102,7 +102,16 @@ class Patient extends Model
         'moderna',
         'faizer',
         'astrazenica',
-            ]; 
+
+        'ihd',
+        'dm',
+        'htn',
+        'dld',
+        'ba',
+        'drugs',
+        'foods',
+        'plasters',
+        ]; 
 
     /**
      * The attributes that should be mutated to dates.

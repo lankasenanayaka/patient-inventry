@@ -24,11 +24,15 @@
          border: 1px solid black;
          padding-top:8px;
       }
+      #table3 tr td {
+         border: 1px solid black;
+         padding-top:2px;
+      }
       table {
          border-collapse: collapse;
       }
       table td{
-         padding-top:4px;
+         padding-top:2px;
       }
       </style>
    </head>
@@ -104,7 +108,127 @@
             </tr>
             <tr>
                <td>5. PCR/RAT DATE :‐ </td>
-               <td> {{ ($patient->date1)?$patient->date1:"" }} </td>
+               <td >
+                  <table id="table3" >
+                     <tbody>
+                        <tr>
+                           <td></td><td>PCR/RAT</td><td>Date</td><td>Positive/Negative</td>
+                        </tr>
+                        @if($patient->pcr_rat1)
+                        <tr>
+                           <td>DATE</td>
+                           <td>                           
+                              {{ optional($patient)->pcr_rat1==1?'PCR':'' }}
+                              {{ optional($patient)->pcr_rat1==2?'RAT':'' }}
+                           </td>
+                           <td> 
+                              {{ ($patient->date1)?$patient->date1:"" }}
+                           </td>
+                           <td>
+                              {{ optional($patient)->pcr_rat_res1==1?'Positive':'' }}
+                              {{ optional($patient)->pcr_rat_res1==2?'Negative':'' }}
+                           </td>
+                        </tr>
+                        @endif
+                        @if($patient->pcr_rat2)
+                        <tr>
+                           <td>DATE</td>
+                           <td>                           
+                              {{ optional($patient)->pcr_rat2==1?'PCR':'' }}
+                              {{ optional($patient)->pcr_rat2==2?'RAT':'' }}
+                           </td>
+                           <td> 
+                              {{ ($patient->date1)?$patient->date2:"" }}
+                           </td>
+                           <td>
+                              {{ optional($patient)->pcr_rat_res2==1?'Positive':'' }}
+                              {{ optional($patient)->pcr_rat_res2==2?'Negative':'' }}
+                           </td>
+                        </tr>
+                        @endif
+                        @if($patient->pcr_rat3)
+                        <tr>
+                           <td>DATE</td>
+                           <td>                           
+                              {{ optional($patient)->pcr_rat3==1?'PCR':'' }}
+                              {{ optional($patient)->pcr_rat3==2?'RAT':'' }}
+                           </td>
+                           <td> 
+                              {{ ($patient->date1)?$patient->date3:"" }}
+                           </td>
+                           <td>
+                              {{ optional($patient)->pcr_rat_res3==1?'Positive':'' }}
+                              {{ optional($patient)->pcr_rat_res3==2?'Negative':'' }}
+                           </td>
+                        </tr>
+                        @endif
+                        @if($patient->pcr_rat4)
+                        <tr>
+                           <td>DATE</td>
+                           <td>                           
+                              {{ optional($patient)->pcr_rat4==1?'PCR':'' }}
+                              {{ optional($patient)->pcr_rat4==2?'RAT':'' }}
+                           </td>
+                           <td> 
+                              {{ ($patient->date1)?$patient->date4:"" }}
+                           </td>
+                           <td>
+                              {{ optional($patient)->pcr_rat_res4==1?'Positive':'' }}
+                              {{ optional($patient)->pcr_rat_res4==2?'Negative':'' }}
+                           </td>
+                        </tr>
+                        @endif
+                        @if($patient->pcr_rat5)
+                        <tr>
+                           <td>DATE</td>
+                           <td>                           
+                              {{ optional($patient)->pcr_rat5==1?'PCR':'' }}
+                              {{ optional($patient)->pcr_rat5==2?'RAT':'' }}
+                           </td>
+                           <td> 
+                              {{ ($patient->date1)?$patient->date5:"" }}
+                           </td>
+                           <td>
+                              {{ optional($patient)->pcr_rat_res5==1?'Positive':'' }}
+                              {{ optional($patient)->pcr_rat_res5==2?'Negative':'' }}
+                           </td>
+                        </tr>
+                        @endif
+                        @if($patient->pcr_rat6)
+                        <tr>
+                           <td>DATE</td>
+                           <td>                           
+                              {{ optional($patient)->pcr_rat6==1?'PCR':'' }}
+                              {{ optional($patient)->pcr_rat6==2?'RAT':'' }}
+                           </td>
+                           <td> 
+                              {{ ($patient->date1)?$patient->date6:"" }}
+                           </td>
+                           <td>
+                              {{ optional($patient)->pcr_rat_res6==1?'Positive':'' }}
+                              {{ optional($patient)->pcr_rat_res6==2?'Negative':'' }}
+                           </td>
+                        </tr>
+                        @endif
+                        @if($patient->pcr_rat7)
+                        <tr>
+                           <td>DATE</td>
+                           <td>                           
+                              {{ optional($patient)->pcr_rat7==1?'PCR':'' }}
+                              {{ optional($patient)->pcr_rat7==2?'RAT':'' }}
+                           </td>
+                           <td> 
+                              {{ ($patient->date1)?$patient->date7:"" }}
+                           </td>
+                           <td>
+                              {{ optional($patient)->pcr_rat_res7==1?'Positive':'' }}
+                              {{ optional($patient)->pcr_rat_res7==2?'Negative':'' }}
+                           </td>
+                        </tr>
+                        @endif
+                     </tbody>  
+                  </table>
+               </td>
             </tr>
             <tr>
                <td>6. TEL NO :‐ </td>
@@ -162,19 +286,19 @@
                <td> 2. PAST MEDICAL HISTORY :‐ </td>
                <td> 
                   <label class="checkbox-inline">
-                     IHD : <input type="checkbox" name="sputnik" id="sputnik" value="1" >
+                     IHD : <input type="checkbox"  {{ optional($patient)->ihd==1?'checked':'' }} >
                   </label> &nbsp;&nbsp;
                   <label class="checkbox-inline">
-                     DM : <input type="checkbox" name="sinopharm" id="sinopharm" value="1" >
+                     DM : <input type="checkbox"  {{ optional($patient)->dm==1?'checked':'' }} >
                   </label> &nbsp;&nbsp;
                   <label class="checkbox-inline">
-                     HTN : <input type="checkbox" name="covishield" id="covishield" value="1"  >
+                     HTN : <input type="checkbox"  {{ optional($patient)->htn==1?'checked':'' }} >
                   </label>
                   <label class="checkbox-inline">
-                     DLD : <input type="checkbox" name="covishield" id="covishield" value="1"  >
+                     DLD : <input type="checkbox"  {{ optional($patient)->dld==1?'checked':'' }} >
                   </label>
                   <label class="checkbox-inline">
-                     BA : <input type="checkbox" name="covishield" id="covishield" value="1"  >
+                     BA : <input type="checkbox"  {{ optional($patient)->ba==1?'checked':'' }} >
                   </label>
                   <!-- IHD : &nbsp;&nbsp; DM : &nbsp;&nbsp; HTN : &nbsp;&nbsp; DLD : &nbsp;&nbsp; BA : &nbsp;&nbsp; -->
                </td>
@@ -187,13 +311,13 @@
                <td> 4. ALLERGY :‐ </td>
                <td> 
                   <label class="checkbox-inline">
-                  DRUGS : <input type="checkbox" name="sputnik" id="sputnik" value="1" >
+                  DRUGS : <input type="checkbox"  {{ optional($patient)->drugs==1?'checked':'' }} >
                   </label> &nbsp;&nbsp;
                   <label class="checkbox-inline">
-                  FOODS : <input type="checkbox" name="sinopharm" id="sinopharm" value="1" >
+                  FOODS : <input type="checkbox"  {{ optional($patient)->foods==1?'checked':'' }} >
                   </label> &nbsp;&nbsp;
                   <label class="checkbox-inline">
-                  PLASTERS : <input type="checkbox" name="covishield" id="covishield" value="1"  >
+                  PLASTERS : <input type="checkbox"   {{ optional($patient)->plasters==1?'checked':'' }} >
                   </label>                  
                </td>
             </tr>

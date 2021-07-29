@@ -225,6 +225,42 @@
 </div>
 
 <div class="form-group col-md-12">
+    <label for="type_of_vaccine" class="col-md-12 control-label">Past medical history</label>
+    <div class="col-md-10">
+        <label class="checkbox-inline">
+            <input type="checkbox" name="ihd" id="ihd" value="1" {{ old('ihd', optional($patient)->ihd)==1?'checked':'' }} >&nbsp;&nbsp;IHD
+        </label> &nbsp;&nbsp;
+        <label class="checkbox-inline">
+            <input type="checkbox" name="dm" id="dm" value="1" {{ old('dm', optional($patient)->dm)==1?'checked':'' }} >&nbsp;&nbsp;DM
+        </label> &nbsp;&nbsp;
+        <label class="checkbox-inline">
+            <input type="checkbox" name="htn" id="htn" value="1" {{ old('htn', optional($patient)->htn)==1?'checked':'' }} >&nbsp;&nbsp;HTN
+        </label>&nbsp;&nbsp;
+        <label class="checkbox-inline">
+            <input type="checkbox" name="dld" id="dld" value="1" {{ old('dld', optional($patient)->dld)==1?'checked':'' }} >&nbsp;&nbsp;DLD
+        </label>&nbsp;&nbsp;
+        <label class="checkbox-inline">
+            <input type="checkbox" name="ba" id="ba" value="1" {{ old('ba', optional($patient)->ba)==1?'checked':'' }} >&nbsp;&nbsp;BA
+        </label>        
+    </div>
+</div>
+
+<div class="form-group col-md-12">
+    <label for="type_of_vaccine" class="col-md-12 control-label">Allergy</label>
+    <div class="col-md-10">
+        <label class="checkbox-inline">
+            <input type="checkbox" name="drugs" id="drugs" value="1" {{ old('drugs', optional($patient)->drugs)==1?'checked':'' }} >&nbsp;&nbsp;DRUGS
+        </label> &nbsp;&nbsp;
+        <label class="checkbox-inline">
+            <input type="checkbox" name="foods" id="foods" value="1" {{ old('foods', optional($patient)->foods)==1?'checked':'' }} >&nbsp;&nbsp;FOODS
+        </label> &nbsp;&nbsp;
+        <label class="checkbox-inline">
+            <input type="checkbox" name="plasters" id="plasters" value="1" {{ old('plasters', optional($patient)->plasters)==1?'checked':'' }} >&nbsp;&nbsp;PLASTERS
+        </label>&nbsp;&nbsp;               
+    </div>
+</div>
+
+<div class="form-group col-md-12">
     <label for="symptomatic" class="col-md-12 control-label">Symptomatic</label>
     <div class="col-md-10">
         <label class="radio-inline ">
@@ -400,10 +436,10 @@
                 <div class="form-group">
                     <label></label>
                     <label class="radio-inline">
-                        <input type="radio" name="pcr_rat1" id="pcr_rat1" value="1" {{ old('pcr_rat1', optional($patient)->pcr_rat1)==1?'checked':'' }} >Yes
+                        <input type="radio" name="pcr_rat1" id="pcr_rat1" value="1" {{ old('pcr_rat1', optional($patient)->pcr_rat1)==1?'checked':'' }} >PCR
                     </label> &nbsp;
                     <label class="radio-inline">
-                        <input type="radio" name="pcr_rat1" id="pcr_rat1" value="2" {{ old('pcr_rat1', optional($patient)->pcr_rat1)==2?'checked':'' }}>No
+                        <input type="radio" name="pcr_rat1" id="pcr_rat1" value="2" {{ old('pcr_rat1', optional($patient)->pcr_rat1)==2?'checked':'' }}>RAT
                     </label>    
                 </div>
             </td>
@@ -411,10 +447,10 @@
                 <div class="form-group">
                     <label></label>
                     <label class="radio-inline">
-                        <input type="radio" name="pcr_rat2" id="pcr_rat2" value="1" {{ old('pcr_rat2', optional($patient)->pcr_rat2)==1?'checked':'' }} >Yes
+                        <input type="radio" name="pcr_rat2" id="pcr_rat2" value="1" {{ old('pcr_rat2', optional($patient)->pcr_rat2)==1?'checked':'' }} >PCR
                     </label> &nbsp;
                     <label class="radio-inline">
-                        <input type="radio" name="pcr_rat2" id="pcr_rat2" value="2" {{ old('pcr_rat2', optional($patient)->pcr_rat2)==2?'checked':'' }}>No
+                        <input type="radio" name="pcr_rat2" id="pcr_rat2" value="2" {{ old('pcr_rat2', optional($patient)->pcr_rat2)==2?'checked':'' }}>RAT
                     </label>    
                 </div>
             </td>
@@ -422,10 +458,10 @@
                 <div class="form-group">
                     <label></label>
                     <label class="radio-inline">
-                        <input type="radio" name="pcr_rat3" id="pcr_rat3" value="1" {{ old('pcr_rat3', optional($patient)->pcr_rat3)==1?'checked':'' }}>Yes
+                        <input type="radio" name="pcr_rat3" id="pcr_rat3" value="1" {{ old('pcr_rat3', optional($patient)->pcr_rat3)==1?'checked':'' }}>PCR
                     </label> &nbsp;
                     <label class="radio-inline">
-                        <input type="radio" name="pcr_rat3" id="pcr_rat3" value="2" {{ old('pcr_rat3', optional($patient)->pcr_rat3)==2?'checked':'' }}>No
+                        <input type="radio" name="pcr_rat3" id="pcr_rat3" value="2" {{ old('pcr_rat3', optional($patient)->pcr_rat3)==2?'checked':'' }}>RAT
                     </label>    
                 </div>
             </td>
@@ -433,10 +469,10 @@
                 <div class="form-group">
                     <label></label>
                     <label class="radio-inline">
-                        <input type="radio" name="pcr_rat4" id="pcr_rat4" value="1" {{ old('pcr_rat4', optional($patient)->pcr_rat4)==1?'checked':'' }}>Yes
+                        <input type="radio" name="pcr_rat4" id="pcr_rat4" value="1" {{ old('pcr_rat4', optional($patient)->pcr_rat4)==1?'checked':'' }}>PCR
                     </label> &nbsp;
                     <label class="radio-inline">
-                        <input type="radio" name="pcr_rat4" id="pcr_rat4" value="2" {{ old('pcr_rat4', optional($patient)->pcr_rat4)==2?'checked':'' }}>No
+                        <input type="radio" name="pcr_rat4" id="pcr_rat4" value="2" {{ old('pcr_rat4', optional($patient)->pcr_rat4)==2?'checked':'' }}>RAT
                     </label>    
                 </div>
             </td>
@@ -444,10 +480,10 @@
                 <div class="form-group">
                     <label></label>
                     <label class="radio-inline">
-                        <input type="radio" name="pcr_rat5" id="pcr_rat5" value="1" {{ old('pcr_rat5', optional($patient)->pcr_rat5)==1?'checked':'' }}>Yes
+                        <input type="radio" name="pcr_rat5" id="pcr_rat5" value="1" {{ old('pcr_rat5', optional($patient)->pcr_rat5)==1?'checked':'' }}>PCR
                     </label> &nbsp;
                     <label class="radio-inline">
-                        <input type="radio" name="pcr_rat5" id="pcr_rat5" value="2" {{ old('pcr_rat5', optional($patient)->pcr_rat5)==2?'checked':'' }}>No
+                        <input type="radio" name="pcr_rat5" id="pcr_rat5" value="2" {{ old('pcr_rat5', optional($patient)->pcr_rat5)==2?'checked':'' }}>RAT
                     </label>    
                 </div>
             </td>
@@ -455,10 +491,10 @@
                 <div class="form-group">
                     <label></label>
                     <label class="radio-inline">
-                        <input type="radio" name="pcr_rat6" id="pcr_rat6" value="1" {{ old('pcr_rat6', optional($patient)->pcr_rat6)==1?'checked':'' }}>Yes
+                        <input type="radio" name="pcr_rat6" id="pcr_rat6" value="1" {{ old('pcr_rat6', optional($patient)->pcr_rat6)==1?'checked':'' }}>PCR
                     </label> &nbsp;
                     <label class="radio-inline">
-                        <input type="radio" name="pcr_rat6" id="pcr_rat6" value="2" {{ old('pcr_rat6', optional($patient)->pcr_rat6)==2?'checked':'' }}>No
+                        <input type="radio" name="pcr_rat6" id="pcr_rat6" value="2" {{ old('pcr_rat6', optional($patient)->pcr_rat6)==2?'checked':'' }}>RAT
                     </label>    
                 </div>
             </td>
@@ -466,10 +502,10 @@
                 <div class="form-group">
                     <label></label>
                     <label class="radio-inline">
-                        <input type="radio" name="pcr_rat7" id="pcr_rat7" value="1" {{ old('pcr_rat7', optional($patient)->pcr_rat7)==1?'checked':'' }}>Yes
+                        <input type="radio" name="pcr_rat7" id="pcr_rat7" value="1" {{ old('pcr_rat7', optional($patient)->pcr_rat7)==1?'checked':'' }}>PCR
                     </label> &nbsp;
                     <label class="radio-inline">
-                        <input type="radio" name="pcr_rat7" id="pcr_rat7" value="2" {{ old('pcr_rat7', optional($patient)->pcr_rat7)==2?'checked':'' }}>No
+                        <input type="radio" name="pcr_rat7" id="pcr_rat7" value="2" {{ old('pcr_rat7', optional($patient)->pcr_rat7)==2?'checked':'' }}>RAT
                     </label>    
                 </div>
             </td>
