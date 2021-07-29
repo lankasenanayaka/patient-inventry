@@ -144,8 +144,9 @@
                   {{ ($patient->sputnik)? "Sputnik, ":"" }} 
                   {{ ($patient->sinopharm)?"Sinopharm, ":"" }} 
                   {{ ($patient->covishield)?"Sovishield, ":"" }} 
-                  {{ ($patient->moderna)?"Moderna, ":"" }} 
-                  {{ ($patient->faizer)?"Faizer, ":"" }} 
+                  {{ ($patient->moderna)?"Modernize, ":"" }} 
+                  {{ ($patient->faizer)?"Pfizer, ":"" }} 
+                  {{ ($patient->astrazenica)?"Astrazenica, ":"" }} 
                </td>
             </tr>
             <tr>

@@ -101,6 +101,7 @@ class Patient extends Model
         'is_discharged',
         'moderna',
         'faizer',
+        'astrazenica',
             ]; 
 
     /**

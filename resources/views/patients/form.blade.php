@@ -218,6 +218,9 @@
         <label class="checkbox-inline">
             <input type="checkbox" name="faizer" id="faizer" value="1" {{ old('faizer', optional($patient)->faizer)==1?'checked':'' }} >&nbsp;&nbsp;Faizer
         </label>
+        <label class="checkbox-inline">
+            <input type="checkbox" name="astrazenica" id="astrazenica" value="1" {{ old('astrazenica', optional($patient)->astrazenica)==1?'checked':'' }} >&nbsp;&nbsp;Astrazenica
+        </label>
     </div>
 </div>
 

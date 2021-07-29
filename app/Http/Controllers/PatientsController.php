@@ -393,8 +393,9 @@ class PatientsController extends Controller
             'sign_date' => 'nullable',
             'signature' => 'nullable',
             'is_discharged' => 'nullable',
-            'moderna' => 'nullable',
+            'moderna' => 'nullable', 
             'faizer' => 'nullable',
+            'astrazenica' => 'nullable',
         ];
         
         $data = $request->validate($rules);
