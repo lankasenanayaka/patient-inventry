@@ -253,6 +253,26 @@ class PatientsController extends Controller
             $patient = Patient::where('user_id', auth()->user()->id)->findOrFail($id);
 
             $data = $this->setDischargeDate($data);
+
+            if(!isset($data['sputnik'])){ 
+                $data['sputnik'] =null;
+            }
+            if(!isset($data['sinopharm']) ){ 
+                $data['sinopharm'] =null;
+            }
+            if(!isset($data['moderna'])){ 
+                $data['moderna'] =null;
+            }
+            if(!isset($data['faizer'])){ 
+                $data['faizer'] =null;
+            } 
+            if(!isset($data['astrazenica'])){ 
+                $data['astrazenica'] =null;
+            }
+            if(!isset($data['covishield'])){ 
+                $data['covishield'] =null;
+            }
+            
             // dd($data);
             $patient->update($data);
 
