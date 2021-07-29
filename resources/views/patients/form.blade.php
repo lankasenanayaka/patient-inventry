@@ -200,7 +200,7 @@
     </div> 
 </div>
 
-<div class="form-group col-md-6">
+<div class="form-group col-md-12">
     <label for="type_of_vaccine" class="col-md-12 control-label">Type of vaccine</label>
     <div class="col-md-10">
         <label class="checkbox-inline">
@@ -211,6 +211,12 @@
         </label> &nbsp;&nbsp;
         <label class="checkbox-inline">
             <input type="checkbox" name="covishield" id="covishield" value="1" {{ old('covishield', optional($patient)->covishield)==1?'checked':'' }} >&nbsp;&nbsp;Covishield
+        </label>
+        <label class="checkbox-inline">
+            <input type="checkbox" name="moderna" id="moderna" value="1" {{ old('moderna', optional($patient)->moderna)==1?'checked':'' }} >&nbsp;&nbsp;Moderna
+        </label>
+        <label class="checkbox-inline">
+            <input type="checkbox" name="faizer" id="faizer" value="1" {{ old('faizer', optional($patient)->faizer)==1?'checked':'' }} >&nbsp;&nbsp;Faizer
         </label>
     </div>
 </div>

@@ -99,6 +99,8 @@ class Patient extends Model
         'sign_date',
         'signature',
         'is_discharged',
+        'moderna',
+        'faizer',
             ]; 
 
     /**

@@ -37,11 +37,11 @@
          <table id="tbl1" align="center" height="400" >
             <thead>
             <tr><th colspan="3"> {{ ($patient->user && $patient->user->name)?$patient->user->name:"" }} <br/> {{ ($patient->user && $patient->user->last_name)?$patient->user->last_name:"" }} </th></tr>
-            <tr>
+            <!-- <tr>
                <th colspan="3"> 
                   TP : &nbsp;&nbsp; EMAIL : {{ ($patient->user && $patient->user->email)?$patient->user->email:"" }} 
                </th>
-            </tr>
+            </tr> -->
             </thead>
             <tbody>
             <tr><td colspan="3"> <h3>ADMISSION FORM</h3> </td></tr>
@@ -141,9 +141,11 @@
             <tr>
                <td> 14.TYPE OF VACCINATION :‐ </td>
                <td> 
-                  {{ ($patient->sputnik)? "Sputnik ":"" }} 
-                  {{ ($patient->sinopharm)?"Sinopharm ":"" }} 
-                  {{ ($patient->covishield)?"Sovishield ":"" }} 
+                  {{ ($patient->sputnik)? "Sputnik, ":"" }} 
+                  {{ ($patient->sinopharm)?"Sinopharm, ":"" }} 
+                  {{ ($patient->covishield)?"Sovishield, ":"" }} 
+                  {{ ($patient->moderna)?"Moderna, ":"" }} 
+                  {{ ($patient->faizer)?"Faizer, ":"" }} 
                </td>
             </tr>
             <tr>
@@ -153,7 +155,7 @@
             </tr>
             <tr>
                <td> 1. PATIENT’S COMPLAINTS :‐ </td>
-               <td> </td>
+               <td> <br/><br/><br/> </td>
             </tr>
             <tr>
                <td> 2. PAST MEDICAL HISTORY :‐ </td>

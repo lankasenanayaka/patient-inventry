@@ -260,7 +260,6 @@ class PatientsController extends Controller
                 ->with('patient_id', $id)
                 ->with('success_message', 'Patient was successfully updated.');
         } catch (Exception $exception) {
-
             return back()->withInput()
                 ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
         }        
@@ -394,6 +393,8 @@ class PatientsController extends Controller
             'sign_date' => 'nullable',
             'signature' => 'nullable',
             'is_discharged' => 'nullable',
+            'moderna' => 'nullable',
+            'faizer' => 'nullable',
         ];
         
         $data = $request->validate($rules);
