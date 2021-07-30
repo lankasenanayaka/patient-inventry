@@ -111,8 +111,13 @@ class Patient extends Model
         'drugs',
         'foods',
         'plasters',
+        'first_v_date',
+        'second_v_date',
+        'patient_complains',
+        'guardian',
+        
         ]; 
-
+        
     /**
      * The attributes that should be mutated to dates.
      *
@@ -309,6 +314,26 @@ class Patient extends Model
     }
 
     public function getSignDateAttribute($input)
+    {
+        return ($input)?Carbon::createFromFormat('Y-m-d', $input)->format(config('app.date_format')):"";
+    }
+
+    public function setFirstVDateAttribute($input) 
+    {
+        $this->attributes['first_v_date'] = ($input)?Carbon::createFromFormat(config('app.date_format'), $input)->format('Y-m-d'):null;
+    }
+
+    public function getFirstVDateAttribute($input)
+    {
+        return ($input)?Carbon::createFromFormat('Y-m-d', $input)->format(config('app.date_format')):"";
+    }
+
+    public function setSecondVDateAttribute($input)  
+    {
+        $this->attributes['second_v_date'] = ($input)?Carbon::createFromFormat(config('app.date_format'), $input)->format('Y-m-d'):null;
+    }
+
+    public function getSecondVDateAttribute($input)
     {
         return ($input)?Carbon::createFromFormat('Y-m-d', $input)->format(config('app.date_format')):"";
     }

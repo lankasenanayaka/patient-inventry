@@ -7,6 +7,14 @@
     </div>
 </div>
 
+<div class="form-group {{ $errors->has('guardian') ? 'has-error' : '' }}">
+    <label for="guardian" class="col-md-2 control-label">Guardian</label>
+    <div class="col-md-10">
+        <input class="form-control" name="guardian" type="text" id="guardian" value="{{ old('guardian', optional($patient)->guardian) }}" maxlength="200" placeholder="Enter guardian name here...">
+        {!! $errors->first('guardian', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
+
 <div class="form-group {{ $errors->has('age') ? 'has-error' : '' }}">
     <label for="age" class="col-md-2 control-label">Age</label>
     <div class="col-md-10">
@@ -188,6 +196,14 @@
     </div>       
 </div>
 
+<div class="form-group {{ $errors->has('first_v_date') ? 'has-error' : '' }}">
+    <label for="first_v_date" class="col-md-12 control-label">01'st Covid19 vaccine date </label>
+    <div class="col-md-12">
+        <input class="form-control datepicker" readonly name="first_v_date" type="text" id="first_v_date" value="{{ old('first_v_date', optional($patient)->first_v_date) }}" placeholder="01'st Covid19 vaccine date...">
+        {!! $errors->first('first_v_date', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
+
 <div class="form-group col-md-6">
     <label for="vaccine2_given" class="col-md-12 control-label">Covid19 vaccine 02'nd dose given</label>
     <div class="col-md-10">
@@ -198,6 +214,14 @@
             <input type="radio" name="vaccine2_given" id="vaccine2_given2" value="2" {{ old('vaccine2_given', optional($patient)->vaccine2_given)==2?'checked':'' }} >&nbsp;&nbsp;No
         </label>   
     </div> 
+</div>
+
+<div class="form-group {{ $errors->has('second_v_date') ? 'has-error' : '' }}">
+    <label for="second_v_date" class="col-md-12 control-label">02'nd Covid19 vaccine date </label>
+    <div class="col-md-12">
+        <input class="form-control datepicker" readonly name="second_v_date" type="text" id="second_v_date" value="{{ old('second_v_date', optional($patient)->second_v_date) }}" placeholder="02'nd Covid19 vaccine date...">
+        {!! $errors->first('second_v_date', '<p class="help-block">:message</p>') !!}
+    </div>
 </div>
 
 <div class="form-group col-md-12">
@@ -216,7 +240,7 @@
             <input type="checkbox" name="moderna" id="moderna" value="1" {{ old('moderna', optional($patient)->moderna)==1?'checked':'' }} >&nbsp;&nbsp;Moderna
         </label>
         <label class="checkbox-inline">
-            <input type="checkbox" name="faizer" id="faizer" value="1" {{ old('faizer', optional($patient)->faizer)==1?'checked':'' }} >&nbsp;&nbsp;Faizer
+            <input type="checkbox" name="faizer" id="faizer" value="1" {{ old('faizer', optional($patient)->faizer)==1?'checked':'' }} >&nbsp;&nbsp;Pfizer
         </label>
         <label class="checkbox-inline">
             <input type="checkbox" name="astrazenica" id="astrazenica" value="1" {{ old('astrazenica', optional($patient)->astrazenica)==1?'checked':'' }} >&nbsp;&nbsp;Astrazenica
@@ -644,6 +668,14 @@
     <div class="col-md-10">
         <textarea class="form-control" name="remark_investigations" type="text" id="remark_investigations" value="" placeholder="Enter remark investigations here...">{{ old('remark_investigations', optional($patient)->remark_investigations) }}</textarea>
         {!! $errors->first('remark_investigations', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
+
+<div class="form-group {{ $errors->has('patient_complains') ? 'has-error' : '' }}">
+    <label for="patient_complains" class="col-md-12 control-label">Patient complains</label>
+    <div class="col-md-10">
+        <textarea class="form-control" name="patient_complains" type="text" id="patient_complains" value="" placeholder="Enter patient complains here...">{{ old('patient_complains', optional($patient)->patient_complains) }}</textarea>
+        {!! $errors->first('patient_complains', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
 

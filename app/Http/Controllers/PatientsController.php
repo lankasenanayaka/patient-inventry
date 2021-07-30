@@ -242,7 +242,7 @@ class PatientsController extends Controller
             ->withErrors(['unexpected_error' => 'Bed is allocated to other patient.']);
         }
 
-        try {
+        // try {
             
             $data = $this->getData($request);
             
@@ -305,10 +305,10 @@ class PatientsController extends Controller
             return redirect()->route('patients.patient.index')
                 ->with('patient_id', $id)
                 ->with('success_message', 'Patient was successfully updated.');
-        } catch (Exception $exception) {
-            return back()->withInput()
-                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
-        }        
+        // } catch (Exception $exception) {
+        //     return back()->withInput()
+        //         ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
+        // }        
     }
 
     public function setDischargeDate($data){
@@ -450,6 +450,11 @@ class PatientsController extends Controller
             'drugs' => 'nullable',
             'foods' => 'nullable',
             'plasters' => 'nullable',
+            'first_v_date' => 'nullable',
+            'second_v_date' => 'nullable',
+            'patient_complains' => 'nullable',
+            'guardian' => 'nullable',
+            
         ];
         
         $data = $request->validate($rules);

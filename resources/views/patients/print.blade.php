@@ -18,11 +18,11 @@
       */
       #table1 tr td {
          border: 1px solid black;
-         padding-top:8px;
+         padding-top:4px;
       }
       #table2 tr td {
          border: 1px solid black;
-         padding-top:8px;
+         padding-top:4px;
       }
       #table3 tr td {
          border: 1px solid black;
@@ -95,6 +95,10 @@
                <td> {{ ($patient->name)?$patient->name:"" }} </td>
             </tr>
             <tr>
+               <td>&nbsp; Guardian :‐ </td>
+               <td> {{ ($patient->guardian)?$patient->guardian:"" }} </td>
+            </tr>
+            <tr>
                <td>2. AGE :‐ </td>
                <td> {{ ($patient->age)?$patient->age:"" }} </td>
             </tr>
@@ -110,10 +114,7 @@
                <td>5. PCR/RAT DATE :‐ </td>
                <td >
                   <table id="table3" >
-                     <tbody>
-                        <tr>
-                           <td></td><td>PCR/RAT</td><td>Date</td><td>Positive/Negative</td>
-                        </tr>
+                     <tbody>                        
                         @if($patient->pcr_rat1)
                         <tr>
                            <td>DATE</td>
@@ -260,7 +261,10 @@
             </tr>
             <tr>
                <td> 13.DATE OF VACCINATION :‐ </td>
-               <td> 1ST   2ND  </td>
+               <td> 
+                  {{ ($patient->first_v_date)?"1ST ".$patient->first_v_date:"" }}            
+                  {{ ($patient->second_v_date)?"2ND ".$patient->second_v_date:"" }}
+               </td>
             </tr>
             <tr>
                <td> 14.TYPE OF VACCINATION :‐ </td>
@@ -268,7 +272,7 @@
                   {{ ($patient->sputnik)? "Sputnik, ":"" }} 
                   {{ ($patient->sinopharm)?"Sinopharm, ":"" }} 
                   {{ ($patient->covishield)?"Covishield, ":"" }} 
-                  {{ ($patient->moderna)?"Modernize, ":"" }} 
+                  {{ ($patient->moderna)?"Moderna, ":"" }} 
                   {{ ($patient->faizer)?"Pfizer, ":"" }} 
                   {{ ($patient->astrazenica)?"Astrazenica, ":"" }} 
                </td>
@@ -280,7 +284,7 @@
             </tr>
             <tr>
                <td> 1. PATIENT’S COMPLAINTS :‐ </td>
-               <td> <br/><br/><br/> </td>
+               <td> {{ ($patient->patient_complains)?$patient->patient_complains:"" }}  </td>
             </tr>
             <tr>
                <td> 2. PAST MEDICAL HISTORY :‐ </td>
